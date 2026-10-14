@@ -1,0 +1,30 @@
+1
+00:00:00,000 --> 00:00:04,000
+preset: enhance
+deck: a
+uZoom: 1.35
+uScanner: 0.25
+uReadout: 0.35
+uFeedbackMix: 0.04
+
+2
+00:00:04,000 --> 00:00:08,000
+preset: enhance
+deck: a
+uZoom: 2.40
+uPanX: 0.08
+uPanY: -0.03
+uSharpen: 0.55
+uEdgeTrace: 0.60
+uScanner: 0.72
+uReadout: 0.80
+uChromatic: 0.22
+
+3
+00:00:08,000 --> 00:00:12,000
+preset: kaleido_feedback
+deck: a
+uSegments: 10
+uFeedbackAmount: 0.55
+uFeedbackZoom: 1.02
+uFeedbackRotate: 0.12

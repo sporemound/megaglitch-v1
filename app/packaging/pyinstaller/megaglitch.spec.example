@@ -1,0 +1,161 @@
+# -*- mode: python ; coding: utf-8 -*-
+"""
+MegaGlitchNode PyInstaller Spec File
+
+This spec file packages MegaGlitchNode with custom CUDA-enabled OpenCV.
+
+Usage:
+    pyinstaller megaglitch.spec
+
+Output:
+    dist/MegaGlitchNode/MegaGlitchNode.exe
+"""
+
+import os
+from PyInstaller.utils.hooks import collect_data_files, collect_submodules
+
+# ===== CONFIGURATION =====
+
+# Path to your custom OpenCV CUDA build
+OPENCV_BIN = r"C:\src\opencv-cuda\build_py312\bin\Release"
+
+# Optional: Path to CUDA Toolkit (if you want to bundle CUDA DLLs)
+# WARNING: Review NVIDIA licensing before redistributing CUDA DLLs
+CUDA_BIN = None  # r"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin"
+
+# ===== COLLECT OPENCV DLLS =====
+
+opencv_binaries = []
+if os.path.isdir(OPENCV_BIN):
+    print(f"Collecting OpenCV DLLs from: {OPENCV_BIN}")
+    for filename in os.listdir(OPENCV_BIN):
+        if filename.startswith("opencv_") and filename.endswith(".dll"):
+            src = os.path.join(OPENCV_BIN, filename)
+            opencv_binaries.append((src, "bin/opencv"))
+            print(f"  + {filename}")
+else:
+    print(f"WARNING: OpenCV bin directory not found: {OPENCV_BIN}")
+
+print(f"Collected {len(opencv_binaries)} OpenCV DLLs")
+
+# ===== COLLECT CUDA DLLS (OPTIONAL) =====
+
+cuda_binaries = []
+if CUDA_BIN and os.path.isdir(CUDA_BIN):
+    print(f"Collecting CUDA DLLs from: {CUDA_BIN}")
+    # Only collect essential CUDA runtime DLLs
+    cuda_dll_names = [
+        "cudart64_120.dll",
+        "cublas64_12.dll",
+        "cublasLt64_12.dll",
+        "cufft64_11.dll",
+        "curand64_10.dll",
+        "cusolver64_11.dll",
+        "cusparse64_12.dll",
+        "nppc64_12.dll",
+        "nppial64_12.dll",
+        "nppicc64_12.dll",
+        "nppidei64_12.dll",
+        "nppif64_12.dll",
+        "nppig64_12.dll",
+        "nppim64_12.dll",
+        "nppist64_12.dll",
+        "nppisu64_12.dll",
+        "nppitc64_12.dll",
+        "npps64_12.dll",
+    ]
+    for dll_name in cuda_dll_names:
+        src = os.path.join(CUDA_BIN, dll_name)
+        if os.path.exists(src):
+            cuda_binaries.append((src, "bin/cuda"))
+            print(f"  + {dll_name}")
+    print(f"Collected {len(cuda_binaries)} CUDA DLLs")
+
+# ===== HIDDEN IMPORTS =====
+
+hiddenimports = [
+    'cv2',
+    'numpy',
+    'dearpygui',
+    'PIL',
+    'mss',
+    'pygetwindow',
+    'pyvirtualcam',
+    'imageio',
+    'megaglitchnode',
+    'megaglitchnode.gpu',
+    'megaglitchnode.gpu.nodes',
+]
+
+# Collect submodules for megaglitchnode
+hiddenimports.extend(collect_submodules('megaglitchnode'))
+
+# ===== ANALYSIS =====
+
+a = Analysis(
+    ['main.py'],
+    pathex=[],
+    binaries=opencv_binaries + cuda_binaries,
+    datas=[
+        # Include any data files (presets, shaders, etc.)
+        ('presets', 'presets'),
+        ('lua_glsl_demo/shaders', 'lua_glsl_demo/shaders'),
+        ('lua_glsl_demo/scripts', 'lua_glsl_demo/scripts'),
+    ],
+    hiddenimports=hiddenimports,
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[
+        # Exclude unnecessary packages to reduce size
+        'matplotlib',
+        'scipy',
+        'pandas',
+        'tkinter',
+    ],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=None,
+    noarchive=False,
+)
+
+# ===== PYZ (PYTHON ARCHIVE) =====
+
+pyz = PYZ(a.pure, a.zipped_data, cipher=None)
+
+# ===== EXE =====
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name='MegaGlitchNode',
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    console=True,  # Set to False to hide console window
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+    icon=None,  # Add path to .ico file if you have one
+)
+
+# ===== COLLECT =====
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='MegaGlitchNode'
+)
+
+
+

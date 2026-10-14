@@ -1,0 +1,97 @@
+{
+  "name": "one_hour_audio_visual_mappings",
+  "duration_seconds": 3600,
+  "notes": "Bidirectional CPU-control mappings. No GPU framebuffer readback is required.",
+  "mappings": [
+    {
+      "source": "bubble_sim_generator_node.density",
+      "target": "fm_synth_node.master_gain",
+      "source_range": [0.0, 1.0],
+      "target_range": [0.15, 0.55],
+      "curve": "smoothstep",
+      "smoothing_ms": 200,
+      "blend_mode": "replace",
+      "enabled": true
+    },
+    {
+      "source": "bubble_sim_generator_node.turbulence",
+      "target": "fm_synth_node.modulation_index",
+      "source_range": [0.0, 1.0],
+      "target_range": [0.5, 14.0],
+      "curve": "exponential",
+      "smoothing_ms": 120,
+      "blend_mode": "replace",
+      "enabled": true
+    },
+    {
+      "source": "bubble_sim_generator_node.refraction_strength",
+      "target": "fm_synth_node.feedback",
+      "source_range": [0.0, 0.15],
+      "target_range": [0.02, 0.55],
+      "curve": "smoothstep",
+      "smoothing_ms": 180,
+      "blend_mode": "replace",
+      "enabled": true
+    },
+    {
+      "source": "abyssal_signal_feedback.manual_chaos",
+      "target": "fm_synth_node.detune",
+      "source_range": [0.0, 1.0],
+      "target_range": [0.0, 35.0],
+      "curve": "linear",
+      "smoothing_ms": 80,
+      "blend_mode": "add",
+      "enabled": true
+    },
+    {
+      "source": "abyssal_signal_feedback.u_beat",
+      "target": "fm_synth_node.trigger",
+      "source_range": [0.8, 1.0],
+      "target_range": [0.0, 1.0],
+      "curve": "stepped",
+      "smoothing_ms": 0,
+      "blend_mode": "max",
+      "enabled": true
+    },
+    {
+      "source": "fm_synth_node.rms",
+      "target": "abyssal_signal_feedback.manual_energy",
+      "source_range": [0.0, 0.8],
+      "target_range": [0.0, 0.6],
+      "curve": "smoothstep",
+      "smoothing_ms": 100,
+      "blend_mode": "replace",
+      "enabled": true
+    },
+    {
+      "source": "fm_synth_node.spectral_brightness",
+      "target": "abyssal_signal_feedback.manual_chaos",
+      "source_range": [0.0, 1.0],
+      "target_range": [0.0, 0.45],
+      "curve": "exponential",
+      "smoothing_ms": 140,
+      "blend_mode": "replace",
+      "enabled": true
+    },
+    {
+      "source": "fm_synth_node.transient",
+      "target": "bubble_sim_generator_node.sparkle",
+      "source_range": [0.0, 1.0],
+      "target_range": [0.1, 1.0],
+      "curve": "smoothstep",
+      "smoothing_ms": 60,
+      "blend_mode": "max",
+      "enabled": true
+    },
+    {
+      "source": "fm_synth_node.beat_phase",
+      "target": "bubble_sim_generator_node.flow_speed",
+      "source_range": [0.0, 1.0],
+      "target_range": [0.15, 0.75],
+      "curve": "smoothstep",
+      "smoothing_ms": 40,
+      "blend_mode": "add",
+      "enabled": true
+    }
+  ]
+}

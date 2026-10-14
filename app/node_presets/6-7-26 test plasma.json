@@ -1,0 +1,137 @@
+{
+  "nodes": [
+    {
+      "type": "LuaShaderNode",
+      "label": "Lua Shader",
+      "position": [
+        150,
+        -1695
+      ],
+      "params": {
+        "shader_preset": "singularity_engine",
+        "shader_path": "lua_glsl_demo/shaders/singularity_engine.frag",
+        "lua_path": "lua_glsl_demo/scripts/singularity_engine.lua",
+        "metadata_path": "lua_glsl_demo/scripts/singularity_engine.effect",
+        "use_input": true,
+        "freeze_time": false,
+        "flip_y": false,
+        "pixel_size": 1.7170000076293945,
+        "palette_levels": 7.5,
+        "dither_strength": 0.0,
+        "posterize_amount": 1.0,
+        "iso_slant": 0.5260000228881836,
+        "iso_depth": 0.4650000035762787,
+        "cascade_angle": 1.0,
+        "perspective_compression": 0.6,
+        "swell_strength": 0.11699999868869781,
+        "chop_strength": 0.022,
+        "wave_speed": 3.0,
+        "cross_current": 0.035,
+        "turbulence_amount": 0.013000000268220901,
+        "surge_amount": 0.0,
+        "fall_line_position": 0.52,
+        "fall_line_curve": 0.15,
+        "fall_strength": 0.6499999761581421,
+        "cascade_speed": 0.75,
+        "cascade_stretch": 0.43700000643730164,
+        "sheet_breakup": 0.0,
+        "foam_threshold": 0.3149999976158142,
+        "foam_edge_strength": 2.380000114440918,
+        "foam_opacity": 0.2879999876022339,
+        "foam_breakup": 0.2879999876022339,
+        "foam_scroll_speed": 0.85,
+        "band_count": 3.946000099182129,
+        "band_thickness": 0.47699999809265137,
+        "band_spacing": 8.0,
+        "band_speed_variation": 1.75,
+        "band_breakup": 0.28,
+        "band_source_offset": 0.13699999451637268,
+        "undertow_strength": 0.12099999934434891,
+        "undertow_noise": 0.5709999799728394,
+        "edge_pull_amount": 0.0,
+        "current_direction": -0.48899999260902405,
+        "feedback_wave_echo": 0.5350000262260437,
+        "old_wave_opacity": 0.5479999780654907,
+        "echo_decay": 0.8560000061988831,
+        "cascade_feedback_strength": 0.5479999780654907,
+        "debris_amount": 1.0,
+        "tile_dropout": 0.0,
+        "streak_length": 0.5,
+        "collapse_darkening": 0.0,
+        "collapse_pixel_size": 8.0
+      }
+    },
+    {
+      "type": "FractalGeneratorNode",
+      "label": "Fractal Gen",
+      "position": [
+        154,
+        -1656
+      ],
+      "params": {
+        "zoom": 1.0,
+        "center_x": -0.5,
+        "center_y": 0.0,
+        "max_iter": 30,
+        "color_speed": 5.0,
+        "continuous_zoom": false,
+        "zoom_speed": 1.878999948501587,
+        "blend_mode": "replace",
+        "blend_opacity": 1.0,
+        "retro_mode": true,
+        "bits_per_channel": 4,
+        "dither": true,
+        "mutation_strength": 0.0,
+        "mutation_rate": 1.0,
+        "mutation_warp": 0.5,
+        "mutation_palette": 0.4,
+        "mutation_fracture": 0.4,
+        "mutation_echo": 0.35
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Fractal Gen",
+      "to_node": "Lua Shader",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Lua Shader",
+      "to_node": "DISPLAY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "version": "1.0",
+  "source_pos": [
+    621,
+    -1652
+  ],
+  "display_pos": [
+    853,
+    -1651
+  ],
+  "display_macros": {
+    "history_offset": 0.0,
+    "memory_decay": 0.0,
+    "event_hazard": 0.0,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.0,
+    "local_time_warp": 0.0,
+    "rupture_threshold": 0.0,
+    "hysteresis_speed": 0.0,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  },
+  "parameter_timeline_state": {
+    "enabled": true,
+    "tracks": {}
+  }
+}

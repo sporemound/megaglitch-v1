@@ -1,0 +1,127 @@
+{
+  "nodes": [
+    {
+      "type": "H264ArtifactsNode",
+      "label": "H264 Artifacts",
+      "position": [
+        215,
+        -72
+      ],
+      "params": {
+        "enabled": true,
+        "iframe_corruption": 0.0,
+        "pframe_corruption": 0.0,
+        "bframe_corruption": 0.0,
+        "bitrate_starve": 0.010999999940395355
+      }
+    },
+    {
+      "type": "AnalogTVNode",
+      "label": "Analog TV",
+      "position": [
+        214,
+        133
+      ],
+      "params": {
+        "enabled": true,
+        "signal_noise": 0.0,
+        "vsync_corruption": 0.0,
+        "hsync_corruption": 0.0,
+        "ghosting": 1.0,
+        "rf_interference": 0.0
+      }
+    },
+    {
+      "type": "SpectralShiftNode",
+      "label": "Spectral Shift",
+      "position": [
+        216,
+        354
+      ],
+      "params": {
+        "enabled": true,
+        "frequency_shift": -0.0430000014603138,
+        "phase_randomize": 1.0,
+        "magnitude_corrupt": 1.0
+      }
+    },
+    {
+      "type": "CUDAChannelDriftNode",
+      "label": "CUDA Channel Drift",
+      "position": [
+        216,
+        540
+      ],
+      "params": {
+        "enabled": true,
+        "r_shift_x": -10.0,
+        "r_shift_y": -5.0,
+        "g_shift_x": 0.0,
+        "g_shift_y": 0.0,
+        "b_shift_x": 10.0,
+        "b_shift_y": 5.0,
+        "scale_var": 0.0,
+        "rot_var": 0.0,
+        "drift_speed": 5.0
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "SOURCE",
+      "to_node": "H264 Artifacts",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "H264 Artifacts",
+      "to_node": "Analog TV",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Analog TV",
+      "to_node": "Spectral Shift",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Spectral Shift",
+      "to_node": "CUDA Channel Drift",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Channel Drift",
+      "to_node": "DISPLAY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "version": "1.0",
+  "source_pos": [
+    50,
+    50
+  ],
+  "display_pos": [
+    650,
+    -29
+  ],
+  "display_macros": {
+    "history_offset": 4.0,
+    "memory_decay": 0.93,
+    "event_hazard": 0.05,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.01,
+    "local_time_warp": 0.12200000137090683,
+    "rupture_threshold": 0.5,
+    "hysteresis_speed": 0.08,
+    "modulator_coupling": 0.0,
+    "time_reversal": 1.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  }
+}

@@ -1,0 +1,14 @@
+[
+  "cublasLt64_12.dll",
+  "cublas64_12.dll",
+  "cufft64_11.dll",
+  "nppc64_12.dll",
+  "nppial64_12.dll",
+  "nppicc64_12.dll",
+  "nppidei64_12.dll",
+  "nppif64_12.dll",
+  "nppig64_12.dll",
+  "nppim64_12.dll",
+  "nppist64_12.dll",
+  "nppitc64_12.dll"
+]

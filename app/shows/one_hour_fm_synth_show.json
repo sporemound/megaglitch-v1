@@ -1,0 +1,55 @@
+{
+  "name": "one_hour_fm_synth_show",
+  "slot_length_seconds": 3600,
+  "target_node": "fm_synth_node",
+  "scenes": [
+    {"time_range": "00:00-08:00", "name": "Abyss Boot"},
+    {"time_range": "08:00-18:00", "name": "Sonar Sweep"},
+    {"time_range": "18:00-28:00", "name": "Datamosh Tide"},
+    {"time_range": "28:00-38:00", "name": "Feedback Tunnel"},
+    {"time_range": "38:00-48:00", "name": "Brainwipe CRT"},
+    {"time_range": "48:00-57:00", "name": "Max Chaos"},
+    {"time_range": "57:00-60:00", "name": "Decompression"}
+  ],
+  "events": [
+    {"type": "set", "time": 0.0, "target": "fm_synth_node.enabled", "value": true},
+    {"type": "set", "time": 0.0, "target": "fm_synth_node.master_gain", "value": 0.25},
+    {"type": "set", "time": 0.0, "target": "fm_synth_node.carrier_freq", "value": 55.0},
+    {"type": "set", "time": 0.0, "target": "fm_synth_node.modulation_index", "value": 0.6},
+    {"type": "set", "time": 0.0, "target": "fm_synth_node.algorithm", "value": 0},
+    {"type": "set", "time": 0.0, "target": "fm_synth_node.lfo_rate", "value": 0.05},
+
+    {"type": "set", "time": 480.0, "target": "fm_synth_node.algorithm", "value": 3},
+    {"type": "set", "time": 480.0, "target": "fm_synth_node.attack", "value": 0.002},
+    {"type": "set", "time": 480.0, "target": "fm_synth_node.decay", "value": 1.6},
+    {"type": "set", "time": 480.0, "target": "fm_synth_node.sustain", "value": 0.0},
+    {"type": "set", "time": 480.0, "target": "fm_synth_node.release", "value": 2.8},
+    {"type": "pulse", "time": 480.0, "duration": 600.0, "interval": 6.0, "target": "fm_synth_node.trigger", "amount": 1.0},
+
+    {"type": "ramp", "time": 1080.0, "duration": 600.0, "target": "fm_synth_node.modulation_index", "from": 0.6, "to": 3.5, "curve": "smoothstep"},
+    {"type": "set", "time": 1080.0, "target": "fm_synth_node.algorithm", "value": 2},
+    {"type": "lfo", "time": 1080.0, "duration": 600.0, "target": "fm_synth_node.carrier_freq", "base": 55.0, "amount": 18.0, "rate_hz": 0.08, "shape": "sine"},
+
+    {"type": "ramp", "time": 1680.0, "duration": 600.0, "target": "fm_synth_node.feedback", "from": 0.04, "to": 0.32, "curve": "ease_in_out"},
+    {"type": "set", "time": 1680.0, "target": "fm_synth_node.algorithm", "value": 0},
+    {"type": "lfo", "time": 1680.0, "duration": 600.0, "target": "fm_synth_node.detune", "base": 4.0, "amount": 18.0, "rate_hz": 0.04, "shape": "sine"},
+
+    {"type": "set", "time": 2280.0, "target": "fm_synth_node.algorithm", "value": 1},
+    {"type": "set", "time": 2280.0, "target": "fm_synth_node.lfo_sync", "value": true},
+    {"type": "set", "time": 2280.0, "target": "fm_synth_node.lfo_depth", "value": 0.65},
+    {"type": "set", "time": 2280.0, "target": "fm_synth_node.tempo_bpm", "value": 132.0},
+
+    {"type": "random_hold", "time": 2880.0, "duration": 540.0, "target": "fm_synth_node.algorithm", "values": [0, 1, 2, 3], "hold_seconds": 24.0, "seed": 1977},
+    {"type": "random_hold", "time": 2880.0, "duration": 540.0, "target": "fm_synth_node.operator_ratio_3", "values": [1.5, 2.0, 3.0, 5.0, 7.0], "hold_seconds": 12.0, "seed": 1978},
+    {"type": "ramp", "time": 2880.0, "duration": 540.0, "target": "fm_synth_node.modulation_index", "from": 5.0, "to": 12.0, "curve": "ease_in_out"},
+    {"type": "ramp", "time": 2880.0, "duration": 540.0, "target": "fm_synth_node.show_chaos", "from": 0.2, "to": 1.0, "curve": "ease_in_out"},
+
+    {"type": "set", "time": 3420.0, "target": "fm_synth_node.algorithm", "value": 0},
+    {"type": "set", "time": 3420.0, "target": "fm_synth_node.operator_ratio_2", "value": 1.0},
+    {"type": "set", "time": 3420.0, "target": "fm_synth_node.operator_ratio_3", "value": 1.0},
+    {"type": "set", "time": 3420.0, "target": "fm_synth_node.operator_ratio_4", "value": 1.0},
+    {"type": "ramp", "time": 3420.0, "duration": 180.0, "target": "fm_synth_node.modulation_index", "from": 8.0, "to": 0.1, "curve": "ease_out"},
+    {"type": "ramp", "time": 3420.0, "duration": 180.0, "target": "fm_synth_node.feedback", "from": 0.3, "to": 0.0, "curve": "ease_out"},
+    {"type": "ramp", "time": 3420.0, "duration": 180.0, "target": "fm_synth_node.master_gain", "from": 0.35, "to": 0.0, "curve": "ease_out"}
+  ]
+}

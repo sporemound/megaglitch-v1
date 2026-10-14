@@ -1,0 +1,205 @@
+{
+  "nodes": [
+    {
+      "type": "VectorscopeNode",
+      "label": "Vectorscope XY",
+      "position": [
+        87,
+        -138
+      ],
+      "params": {
+        "vectorscope_intensity": 1.0,
+        "freq_x": 1.0,
+        "freq_y": 2.0,
+        "phase_offset": 4.171000003814697,
+        "circular_distortion": 0.3
+      }
+    },
+    {
+      "type": "QuantumGestaltCognitiveNode",
+      "label": "Quantum Gestalt (AI)",
+      "position": [
+        88,
+        35
+      ],
+      "params": {
+        "qg_intensity": 0.5,
+        "qg_state": "Gamma (Hyper-focus)",
+        "qg_progress": 0.6489999890327454,
+        "qg_auto_animate": true
+      }
+    },
+    {
+      "type": "QuantumGestaltAlphaNode",
+      "label": "QG Alpha Balance",
+      "position": [
+        88,
+        189
+      ],
+      "params": {
+        "qg_alpha_intensity": 0.5,
+        "qg_alpha_progress": 0.0
+      }
+    },
+    {
+      "type": "QuantumGestaltDeltaNode",
+      "label": "QG Delta Wave",
+      "position": [
+        89,
+        308
+      ],
+      "params": {
+        "qg_delta_intensity": 0.3,
+        "qg_delta_progress": 0.0
+      }
+    },
+    {
+      "type": "QuantumGestaltGammaNode",
+      "label": "QG Gamma Chaos",
+      "position": [
+        89,
+        426
+      ],
+      "params": {
+        "qg_gamma_intensity": 0.9,
+        "qg_gamma_progress": 0.7540000081062317
+      }
+    },
+    {
+      "type": "QuantumGestaltBetaNode",
+      "label": "QG Beta Pulse",
+      "position": [
+        88,
+        543
+      ],
+      "params": {
+        "qg_beta_intensity": 0.7,
+        "qg_beta_progress": 0.7239999771118164
+      }
+    },
+    {
+      "type": "QuantumGestaltThetaNode",
+      "label": "QG Theta Flow",
+      "position": [
+        87,
+        659
+      ],
+      "params": {
+        "qg_theta_intensity": 0.9179999828338623,
+        "qg_theta_progress": 0.5669999718666077
+      }
+    },
+    {
+      "type": "DataMoshingNode",
+      "label": "Data Moshing",
+      "position": [
+        382,
+        -139
+      ],
+      "params": {
+        "block_size": 16,
+        "block_displacement": 0.5299999713897705,
+        "displacement_direction": "random",
+        "block_duplication": 0.23899999260902405,
+        "duplication_pattern": "random",
+        "block_corruption": 0.5600000023841858,
+        "corruption_type": "noise",
+        "block_sorting": 0.0,
+        "sort_method": "brightness",
+        "motion_vectors": 0.0,
+        "vector_length": 20,
+        "bitplane_corruption": 0.0,
+        "bitplane": 1,
+        "dct_glitch_intensity": 0.0,
+        "slit_scan_intensity": 0.49300000071525574,
+        "slit_scan_direction": "right_to_left",
+        "slit_scan_size": 1,
+        "slit_scan_pos": 1.0
+      }
+    },
+    {
+      "type": "KaleidoscopeNode",
+      "label": "Kaleidoscope",
+      "position": [
+        381,
+        283
+      ],
+      "params": {
+        "kaleido_segments": 12,
+        "kaleido_angle": 0.2809999883174896,
+        "kaleido_radius": 2.0
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "SOURCE",
+      "to_node": "Vectorscope XY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Vectorscope XY",
+      "to_node": "Quantum Gestalt (AI)",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Quantum Gestalt (AI)",
+      "to_node": "QG Alpha Balance",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "QG Alpha Balance",
+      "to_node": "QG Delta Wave",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "QG Delta Wave",
+      "to_node": "QG Gamma Chaos",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "QG Gamma Chaos",
+      "to_node": "QG Beta Pulse",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "QG Beta Pulse",
+      "to_node": "QG Theta Flow",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "QG Theta Flow",
+      "to_node": "Data Moshing",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Data Moshing",
+      "to_node": "Kaleidoscope",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Kaleidoscope",
+      "to_node": "DISPLAY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "version": "1.0",
+  "source_pos": [
+    -6,
+    -137
+  ],
+  "display_pos": [
+    667,
+    -149
+  ]
+}

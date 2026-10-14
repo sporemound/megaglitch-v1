@@ -1,0 +1,29 @@
+{
+  "title": "Red Corona: Catching secrets from space",
+  "stream_url": "https://kick.com/berry-punch",
+  "source_photo": {
+    "credit": "USAF",
+    "source_file": "StarCatchersWeb.pdf (user-supplied reference; not bundled)",
+    "publication": "CORONA Star Catchers, NRO Center for the Study of National Reconnaissance, June 2012",
+    "pdf_page": 36,
+    "printed_page": 25,
+    "caption": "C-119J of the 6593d with its recovery gear extended during a training parachute recovery in 1959.",
+    "treatment": "Original photograph preserved, scaled proportionately, no generated replacements."
+  },
+  "style_reference": {
+    "name": "Uniflora Aesthetic Template v0.1",
+    "credit": "Uniflora contributors",
+    "source": "https://github.com/sporemound/uniflora-aesthetic-kit",
+    "commit": "92acf469da1a832c0bad510472dd2a31a832acd8",
+    "branch": "nocturnal-optics",
+    "reference_art_and_documentation_license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "code_license": "Unlicense",
+    "changes": "New archival-photo poster with midnight-blue panels, silver lettering and restrained teal accents. Proposed palette and layout choices are a new interpretation for this brief."
+  },
+  "production": "Native editable SVG text over the original supplied photo; PNG rendered from the SVG. ImageGen draft discarded following user instruction to use the real photograph.",
+  "deliverables": [
+    "source-poster.png",
+    "source-poster.svg"
+  ]
+}

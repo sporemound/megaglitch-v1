@@ -1,0 +1,14 @@
+{
+  "params": [
+    {"name": "uInputMix", "type": "float", "label": "Input Mix", "value": 0.15, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uFeedbackMix", "type": "float", "label": "Feedback Mix", "value": 0.08, "min": 0.0, "max": 0.98, "step": 0.001},
+    {"name": "uScale", "type": "float", "label": "Scale", "value": 5.5, "min": 1.0, "max": 24.0, "step": 0.001},
+    {"name": "uSpeed", "type": "float", "label": "Speed", "value": 0.75, "min": -4.0, "max": 4.0, "step": 0.001},
+    {"name": "uRings", "type": "float", "label": "Rings", "value": 0.55, "min": 0.0, "max": 2.0, "step": 0.001},
+    {"name": "uSymmetry", "type": "int", "label": "Symmetry", "value": 6, "min": 1, "max": 16, "step": 1},
+    {"name": "uScopeGain", "type": "float", "label": "Scope Gain", "value": 1.0, "min": 0.2, "max": 4.0, "step": 0.001},
+    {"name": "uHue", "type": "float", "label": "Hue", "value": 0.58, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uContrast", "type": "float", "label": "Contrast", "value": 1.2, "min": 0.0, "max": 3.0, "step": 0.001},
+    {"name": "uAudioDrive", "type": "float", "label": "Audio Drive", "value": 0.30, "min": 0.0, "max": 1.0, "step": 0.001}
+  ]
+}

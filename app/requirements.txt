@@ -1,0 +1,21 @@
+numpy
+# OpenCV is intentionally external. Development/production uses the custom
+# CUDA build; CPU-only users may install requirements-cpu-opencv.txt instead.
+Pillow
+DearPyGui
+imageio
+pyvirtualcam
+pygetwindow
+mss
+tqdm
+ffmpeg-python
+sounddevice
+mido
+python-rtmidi
+scipy
+moderngl
+glfw
+watchdog
+lupa
+cairosvg
+noise

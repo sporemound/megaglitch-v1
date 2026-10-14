@@ -1,0 +1,13 @@
+{
+  "params": [
+    {"name": "uFeedbackMix", "type": "float", "label": "Feedback Mix", "value": 0.30, "min": 0.0, "max": 0.98, "step": 0.001},
+    {"name": "uSliceCount", "type": "int", "label": "Slices", "value": 72, "min": 2, "max": 240, "step": 1},
+    {"name": "uSliceDrift", "type": "float", "label": "Slice Drift", "value": 0.20, "min": -2.0, "max": 2.0, "step": 0.001},
+    {"name": "uOffset", "type": "float", "label": "Offset", "value": 0.45, "min": 0.0, "max": 2.0, "step": 0.001},
+    {"name": "uSmear", "type": "float", "label": "Smear", "value": 0.22, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uColorSplit", "type": "float", "label": "Color Split", "value": 0.55, "min": 0.0, "max": 2.0, "step": 0.001},
+    {"name": "uStrobe", "type": "float", "label": "Strobe", "value": 0.0, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uUseInput", "type": "checkbox", "label": "Use Input", "value": true, "min": 0, "max": 1, "step": 1},
+    {"name": "uAudioDrive", "type": "float", "label": "Audio Drive", "value": 0.35, "min": 0.0, "max": 1.0, "step": 0.001}
+  ]
+}

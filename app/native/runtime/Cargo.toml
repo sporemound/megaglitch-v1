@@ -1,0 +1,15 @@
+[package]
+name = "megaglitch-runtime"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "megaglitch_runtime"
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "unwind"
+debug = 1
+strip = "none"

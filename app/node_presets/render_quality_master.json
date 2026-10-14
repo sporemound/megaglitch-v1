@@ -1,0 +1,132 @@
+{
+  "nodes": [
+    {
+      "type": "SourceNode",
+      "label": "Source",
+      "position": [50, 100],
+      "params": {}
+    },
+    {
+      "type": "MultimodalAnalysisNode",
+      "label": "Multimodal Analysis",
+      "position": [280, 100],
+      "params": {
+        "enabled": true,
+        "edge_threshold": 0.15,
+        "audio_boost": 0.0,
+        "debug_view": "passthrough"
+      }
+    },
+    {
+      "type": "OpticalFlowRemapNode",
+      "label": "Optical Flow Remap",
+      "position": [510, 100],
+      "params": {
+        "enabled": true,
+        "intensity": 0.85,
+        "flow_scale": 3.5
+      }
+    },
+    {
+      "type": "ControlledRecursiveFeedbackNode",
+      "label": "Controlled Recursive Feedback",
+      "position": [740, 100],
+      "params": {
+        "enabled": true,
+        "feedback_amount": 0.65,
+        "decay": 0.92,
+        "clean_mix": 0.20,
+        "scene_change_threshold": 0.40,
+        "zoom": 1.01,
+        "rotation": 0.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0
+      }
+    },
+    {
+      "type": "PFrameGlitchesNode",
+      "label": "P-Frame Glitches",
+      "position": [970, 100],
+      "params": {
+        "enabled": true,
+        "motion_vector_corruption": 0.35,
+        "motion_vector_direction": "random",
+        "prediction_error_amplify": 0.25,
+        "macroblock_hold_probability": 0.15
+      }
+    },
+    {
+      "type": "TemporalSlicingNode",
+      "label": "Temporal Slicing",
+      "position": [1200, 100],
+      "params": {
+        "enabled": true,
+        "slice_count": 8,
+        "temporal_depth": 6,
+        "direction": "horizontal"
+      }
+    },
+    {
+      "type": "MeshTearNode",
+      "label": "Mesh Tear",
+      "position": [1430, 100],
+      "params": {
+        "enabled": true,
+        "mesh_tear": 0.25,
+        "mesh_grid": 6
+      }
+    },
+    {
+      "type": "ChannelFlowOffsetNode",
+      "label": "Channel Flow Offset",
+      "position": [1660, 100],
+      "params": {
+        "enabled": true,
+        "channel_flow": 0.40,
+        "channel_flow_max": 8
+      }
+    },
+    {
+      "type": "QuantizationSolarizationNode",
+      "label": "Quantization / Solarization",
+      "position": [1890, 100],
+      "params": {
+        "enabled": true,
+        "levels": 16,
+        "solarize_threshold": 0.65,
+        "solarize_mix": 0.35,
+        "intensity": 0.70
+      }
+    },
+    {
+      "type": "EdgeReconstructionNode",
+      "label": "Edge Reconstruction",
+      "position": [2120, 100],
+      "params": {
+        "enabled": true,
+        "strength": 0.75
+      }
+    },
+    {
+      "type": "StructuralRestorationNode",
+      "label": "Structural Restoration",
+      "position": [2350, 100],
+      "params": {
+        "enabled": true,
+        "unsharp_amount": 0.70,
+        "unsharp_radius": 1.2,
+        "unsharp_threshold": 4.0,
+        "local_contrast_clip": 1.5,
+        "edge_reinforce": 0.35,
+        "grain_amount": 0.02
+      }
+    },
+    {
+      "type": "DisplayNode",
+      "label": "Display",
+      "position": [2580, 100],
+      "params": {}
+    }
+  ],
+  "links": []
+}

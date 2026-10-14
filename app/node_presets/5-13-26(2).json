@@ -1,0 +1,188 @@
+{
+  "nodes": [
+    {
+      "type": "CUDAChannelDriftNode",
+      "label": "CUDA Channel Drift",
+      "position": [
+        140,
+        18
+      ],
+      "params": {
+        "enabled": true,
+        "r_shift_x": 5.434999942779541,
+        "r_shift_y": 1.0870000123977661,
+        "g_shift_x": -17.391000747680664,
+        "g_shift_y": 68.47799682617188,
+        "b_shift_x": 36.957000732421875,
+        "b_shift_y": 40.21699905395508,
+        "scale_var": 0.12800000607967377,
+        "rot_var": 0.24500000476837158,
+        "drift_speed": 2.010999917984009
+      }
+    },
+    {
+      "type": "CUDAFlowPixelSortNode",
+      "label": "CUDA Flow Pixel Sort",
+      "position": [
+        55,
+        325
+      ],
+      "params": {
+        "enabled": true,
+        "sort_axis": "x",
+        "region_mode": "edges",
+        "motion_thresh": 36.14099884033203,
+        "streak_len": 1803,
+        "jitter": 1.0,
+        "mix": 1.0
+      }
+    },
+    {
+      "type": "CUDAPersistentFeedbackNode",
+      "label": "CUDA Persistent Feedback",
+      "position": [
+        54,
+        570
+      ],
+      "params": {
+        "enabled": true,
+        "feedback_gain": 0.9290000200271606,
+        "inject_gain": 0.2939999997615814,
+        "decay_curve": "exp",
+        "clamp": 236,
+        "gate_motion": 0.2930000126361847
+      }
+    },
+    {
+      "type": "CUDATemporalMedianNode",
+      "label": "CUDA Temporal Median",
+      "position": [
+        480,
+        80
+      ],
+      "params": {
+        "enabled": true,
+        "window": 15,
+        "mode": "approx",
+        "mix": 0.5049999952316284
+      }
+    },
+    {
+      "type": "GPUFeedbackMixerNode",
+      "label": "CUDA GPU Feedback Mixer",
+      "position": [
+        480,
+        269
+      ],
+      "params": {
+        "enabled": true,
+        "decay": 0.8100000023841858,
+        "mix": 0.6959999799728394,
+        "warp_prev": true,
+        "warp_strength": 0.0010000000474974513
+      }
+    },
+    {
+      "type": "GPUUploadNode",
+      "label": "CUDA GPU Upload",
+      "position": [
+        522,
+        481
+      ],
+      "params": {
+        "enabled": true
+      }
+    },
+    {
+      "type": "ColorSpaceCorruptionNode",
+      "label": "ColorSpace Corruption",
+      "position": [
+        486,
+        632
+      ],
+      "params": {
+        "enabled": true,
+        "source_space": "RGB",
+        "target_space": "XYZ",
+        "channel_swap": true,
+        "quantization_levels": 21
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "SOURCE",
+      "to_node": "CUDA Channel Drift",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Channel Drift",
+      "to_node": "CUDA Flow Pixel Sort",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Flow Pixel Sort",
+      "to_node": "CUDA Persistent Feedback",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Persistent Feedback",
+      "to_node": "CUDA Temporal Median",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Temporal Median",
+      "to_node": "CUDA GPU Feedback Mixer",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA GPU Feedback Mixer",
+      "to_node": "CUDA GPU Upload",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA GPU Upload",
+      "to_node": "ColorSpace Corruption",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "ColorSpace Corruption",
+      "to_node": "DISPLAY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "version": "1.0",
+  "source_pos": [
+    50,
+    50
+  ],
+  "display_pos": [
+    865,
+    5
+  ],
+  "display_macros": {
+    "history_offset": 4.0,
+    "memory_decay": 0.93,
+    "event_hazard": 0.05,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.01,
+    "local_time_warp": 1.9509999752044678,
+    "rupture_threshold": 0.5,
+    "hysteresis_speed": 0.08,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  }
+}

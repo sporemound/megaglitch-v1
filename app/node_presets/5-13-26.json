@@ -1,0 +1,106 @@
+{
+  "nodes": [
+    {
+      "type": "CUDAChannelDriftNode",
+      "label": "CUDA Channel Drift",
+      "position": [
+        4,
+        -2
+      ],
+      "params": {
+        "enabled": true,
+        "r_shift_x": 6.521999835968018,
+        "r_shift_y": -15.217000007629395,
+        "g_shift_x": -26.086999893188477,
+        "g_shift_y": 22.826000213623047,
+        "b_shift_x": 8.696000099182129,
+        "b_shift_y": 5.434999942779541,
+        "scale_var": 0.5,
+        "rot_var": 0.0,
+        "drift_speed": 0.9240000247955322
+      }
+    },
+    {
+      "type": "CUDAPersistentFeedbackNode",
+      "label": "CUDA Persistent Feedback",
+      "position": [
+        0,
+        307
+      ],
+      "params": {
+        "enabled": true,
+        "feedback_gain": 0.92,
+        "inject_gain": 0.22300000488758087,
+        "decay_curve": "linear",
+        "clamp": 255,
+        "gate_motion": 0.17299999296665192
+      }
+    },
+    {
+      "type": "CUDATemporalMedianNode",
+      "label": "CUDA Temporal Median",
+      "position": [
+        7,
+        535
+      ],
+      "params": {
+        "enabled": true,
+        "window": 15,
+        "mode": "full",
+        "mix": 1.0
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "SOURCE",
+      "to_node": "CUDA Channel Drift",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Channel Drift",
+      "to_node": "CUDA Persistent Feedback",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Persistent Feedback",
+      "to_node": "CUDA Temporal Median",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Temporal Median",
+      "to_node": "DISPLAY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "version": "1.0",
+  "source_pos": [
+    5,
+    -70
+  ],
+  "display_pos": [
+    685,
+    -68
+  ],
+  "display_macros": {
+    "history_offset": 4.0,
+    "memory_decay": 0.93,
+    "event_hazard": 0.05,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.01,
+    "local_time_warp": 0.0,
+    "rupture_threshold": 0.5,
+    "hysteresis_speed": 0.08,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  }
+}

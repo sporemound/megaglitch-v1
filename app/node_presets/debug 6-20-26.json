@@ -1,0 +1,151 @@
+{
+  "version": "2.0",
+  "preset_type": "dual_deck_session",
+  "decks": {
+    "a": {
+      "nodes": [
+        {
+          "id": "LuaShaderNode:1",
+          "type": "LuaShaderNode",
+          "label": "Lua Shader",
+          "position": [
+            476,
+            104
+          ],
+          "params": {
+            "shader_preset": "glitch_feedback",
+            "shader_path": "lua_glsl_demo/shaders/glitch_feedback.frag",
+            "lua_path": "lua_glsl_demo/scripts/glitch_feedback.lua",
+            "metadata_path": "lua_glsl_demo/scripts/glitch_feedback.effect",
+            "use_input": true,
+            "freeze_time": false,
+            "flip_y": false,
+            "uFeedbackMix": 0.25,
+            "uWarp": 0.08,
+            "uContrast": 1.0,
+            "uSaturation": 1.0,
+            "uUseInput": true,
+            "uFeedbackZoom": 0.65,
+            "uGlitch": 0.28,
+            "uScanline": 0.55,
+            "uChromatic": 0.55,
+            "uPosterize": 0,
+            "uColorDrift": 0.06,
+            "uBrightness": 1.05,
+            "uInvert": false,
+            "uAudioDrive": 0.35
+          }
+        },
+        {
+          "id": "LuaShaderNode:2",
+          "type": "LuaShaderNode",
+          "label": "Lua Shader",
+          "position": [
+            26,
+            175
+          ],
+          "params": {
+            "shader_preset": "kaleido_feedback",
+            "shader_path": "lua_glsl_demo/shaders/kaleido_feedback.frag",
+            "lua_path": "lua_glsl_demo/scripts/kaleido_feedback.lua",
+            "metadata_path": "lua_glsl_demo/scripts/kaleido_feedback.effect",
+            "use_input": true,
+            "freeze_time": false,
+            "flip_y": false,
+            "uFeedbackMix": 0.25,
+            "uSegments": 8,
+            "uRotation": 0.0,
+            "uZoom": 1.15,
+            "uFeedbackDecay": 0.96,
+            "uFeedbackSpin": 0.0,
+            "uExternalFeedbackMix": 0.35,
+            "uExternalFeedbackZoom": 0.04,
+            "uExternalFeedbackRotate": 0.0,
+            "uExternalFeedbackWarp": 0.25,
+            "uFeedbackColorize": 0.0,
+            "uBloom": 0.45,
+            "uColorCycle": 0.58,
+            "uChromatic": 0.35,
+            "uMirrorOffset": 0.0,
+            "uCenterX": 0.5,
+            "uCenterY": 0.5,
+            "uSourceMix": 0.0,
+            "uUseInput": true,
+            "uAudioDrive": 0.35
+          }
+        }
+      ],
+      "links": [
+        {
+          "from_node": "SOURCE",
+          "from_node_id": null,
+          "to_node": "Lua Shader",
+          "to_node_id": "LuaShaderNode:2",
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        },
+        {
+          "from_node": "Lua Shader",
+          "from_node_id": "LuaShaderNode:2",
+          "to_node": "Lua Shader",
+          "to_node_id": "LuaShaderNode:1",
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        },
+        {
+          "from_node": "Lua Shader",
+          "from_node_id": "LuaShaderNode:1",
+          "to_node": "DISPLAY",
+          "to_node_id": null,
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        }
+      ],
+      "version": "1.0",
+      "source_pos": [
+        50,
+        50
+      ],
+      "display_pos": [
+        848,
+        9
+      ]
+    },
+    "b": {
+      "nodes": [],
+      "links": [],
+      "version": "1.0",
+      "source_pos": [
+        50,
+        50
+      ],
+      "display_pos": [
+        600,
+        50
+      ]
+    }
+  },
+  "master_mix": 0.5,
+  "master_transition": "Normal Mix",
+  "display_macros": {
+    "history_offset": 0.0,
+    "memory_decay": 0.0,
+    "event_hazard": 0.0,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.0,
+    "local_time_warp": 0.0,
+    "rupture_threshold": 0.0,
+    "hysteresis_speed": 0.0,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  },
+  "parameter_timeline_state": {
+    "enabled": true,
+    "tracks": {}
+  }
+}

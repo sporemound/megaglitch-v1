@@ -1,0 +1,149 @@
+{
+  "nodes": [
+    {
+      "type": "CUDATemporalSlitScanNode",
+      "label": "CUDA Temporal Slit-Scan",
+      "position": [
+        219,
+        289
+      ],
+      "params": {
+        "enabled": true,
+        "buffer_size": 67,
+        "orientation": "y_axis",
+        "mix": 1.0,
+        "direction": "backward",
+        "time_scale": 3.135999917984009,
+        "time_offset": 10.109000205993652,
+        "depth_curve": "linear",
+        "luma_scale": 1.2879999876022339,
+        "luma_gamma": 1.0,
+        "luma_invert": false,
+        "luma_blur": 0,
+        "wave_amount": 0.0,
+        "wave_frequency": 4.0,
+        "jitter_amount": 0.0,
+        "jitter_scale": 16.0,
+        "posterize_steps": 0,
+        "freeze_history": false
+      }
+    },
+    {
+      "type": "CUDAFlowWarpNode",
+      "label": "CUDA Flow Warp",
+      "position": [
+        230,
+        54
+      ],
+      "params": {
+        "enabled": true,
+        "flow_gain": 5.326000213623047,
+        "nonlinearity": 1.2,
+        "motion_threshold": 23.641000747680664,
+        "temporal_smooth": 0.2,
+        "border_mode": "reflect"
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "CUDA Temporal Slit-Scan",
+      "to_node": "DISPLAY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "SOURCE",
+      "to_node": "CUDA Flow Warp",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Flow Warp",
+      "to_node": "CUDA Temporal Slit-Scan",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "version": "1.0",
+  "source_pos": [
+    50,
+    50
+  ],
+  "display_pos": [
+    600,
+    50
+  ],
+  "display_macros": {
+    "history_offset": 0.0,
+    "memory_decay": 0.5,
+    "event_hazard": 0.05,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.01,
+    "local_time_warp": 0.0,
+    "rupture_threshold": 0.0,
+    "hysteresis_speed": 0.0,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  },
+  "parameter_timeline_state": {
+    "enabled": true,
+    "tracks": {
+      "399:wave_frequency": {
+        "target_id": "399:wave_frequency",
+        "node_id": "399",
+        "node_label": "CUDA Temporal Slit-Scan",
+        "param": "wave_frequency",
+        "type": "float",
+        "label": "CUDA Temporal Slit-Scan [399] / Wave Frequency",
+        "keyframes": [
+          {
+            "time": 232.31991577148438,
+            "value": 4.0,
+            "interp": "step"
+          }
+        ]
+      },
+      "399:luma_gamma": {
+        "target_id": "399:luma_gamma",
+        "node_id": "399",
+        "node_label": "CUDA Temporal Slit-Scan",
+        "param": "luma_gamma",
+        "type": "float",
+        "label": "CUDA Temporal Slit-Scan [399] / Luma Gamma",
+        "keyframes": [
+          {
+            "time": 297.8599548339844,
+            "value": 1.0,
+            "interp": "step"
+          },
+          {
+            "time": 344.8367614746094,
+            "value": 1.0,
+            "interp": "step"
+          }
+        ]
+      },
+      "461:wave_amount": {
+        "target_id": "461:wave_amount",
+        "node_id": "461",
+        "node_label": "CUDA Temporal Slit-Scan",
+        "param": "wave_amount",
+        "type": "float",
+        "label": "CUDA Temporal Slit-Scan [461] / Wave Amount",
+        "keyframes": [
+          {
+            "time": 460.35443115234375,
+            "value": 0.0,
+            "interp": "linear"
+          }
+        ]
+      }
+    }
+  }
+}

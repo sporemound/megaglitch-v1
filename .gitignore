@@ -1,0 +1,54 @@
+# Python / local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Portable dependencies, exports and staging are built outside source control.
+/runtime/
+/gpu/
+/tools/
+/outputs/
+/temp/
+/verification/
+/build/
+/dist/
+/wheelhouse/
+*.zip
+*.7z
+*.zip.sha256
+*.log
+*.log.*
+*.tmp
+/installation-check.json
+/BUILD-INFO.json
+/BUNDLE-SHA256.txt
+
+# Local credentials and editor state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Host-specific reports in the imported source snapshot
+app/tools/diagnostics/*.json
+app/tools/benchmark/results/
+app/tools/benchmark/native-runtime-commit-validation/
+
+# Declared native/Python build inputs
+/build-inputs/
+*.whl
+
+/app/tools/diagnostics/

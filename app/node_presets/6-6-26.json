@@ -1,0 +1,151 @@
+{
+  "nodes": [
+    {
+      "type": "CUDATemporalSlitScanNode",
+      "label": "CUDA Temporal Slit-Scan",
+      "position": [
+        -82,
+        7
+      ],
+      "params": {
+        "enabled": true,
+        "buffer_size": 48,
+        "orientation": "luma",
+        "mix": 0.9020000100135803,
+        "direction": "backward",
+        "time_scale": 1.0,
+        "time_offset": 0.0,
+        "depth_curve": "center_peak",
+        "luma_scale": 1.0,
+        "luma_gamma": 1.0,
+        "luma_invert": true,
+        "luma_blur": 0,
+        "wave_amount": 0.0,
+        "wave_frequency": 16.0,
+        "jitter_amount": 0.0,
+        "jitter_scale": 16.0,
+        "posterize_steps": 0,
+        "freeze_history": false
+      }
+    },
+    {
+      "type": "CUDALumaKeyedFluidDynamicsNode",
+      "label": "CUDA Luma-Keyed Fluid Dynamics",
+      "position": [
+        -126,
+        499
+      ],
+      "params": {
+        "enabled": true,
+        "viscosity": 3.369999885559082,
+        "flow_dissipation": 0.8619999885559082,
+        "velocity_inject_strength": 7.2170000076293945,
+        "color_decay": 0.92,
+        "grid_resolution": 192,
+        "luma_threshold": 0.1899999976158142,
+        "luma_softness": 0.16,
+        "projection_iterations": 10,
+        "vorticity": 1.2389999628067017,
+        "warp_strength": 36.0,
+        "dye_mix": 0.42399999499320984,
+        "reset_fluid": false,
+        "mix": 0.5049999952316284
+      }
+    },
+    {
+      "type": "GPUWarpRemapNode",
+      "label": "CUDA GPU Warp Remap",
+      "position": [
+        258,
+        5
+      ],
+      "params": {
+        "enabled": true,
+        "mode": "ripple",
+        "strength": 0.001,
+        "block_size": 32,
+        "border_mode": "replicate",
+        "interpolation": "linear",
+        "animate": true
+      }
+    },
+    {
+      "type": "CUDAFlowWarpNode",
+      "label": "CUDA Flow Warp",
+      "position": [
+        246,
+        272
+      ],
+      "params": {
+        "enabled": true,
+        "flow_gain": 7.771999835968018,
+        "nonlinearity": 3.5429999828338623,
+        "motion_threshold": 3.0,
+        "temporal_smooth": 0.2,
+        "border_mode": "reflect"
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "SOURCE",
+      "to_node": "CUDA Temporal Slit-Scan",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Temporal Slit-Scan",
+      "to_node": "CUDA Luma-Keyed Fluid Dynamics",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Luma-Keyed Fluid Dynamics",
+      "to_node": "CUDA GPU Warp Remap",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA GPU Warp Remap",
+      "to_node": "CUDA Flow Warp",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Flow Warp",
+      "to_node": "DISPLAY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "version": "1.0",
+  "source_pos": [
+    50,
+    50
+  ],
+  "display_pos": [
+    582,
+    -31
+  ],
+  "display_macros": {
+    "history_offset": 0.0,
+    "memory_decay": 0.0,
+    "event_hazard": 0.0,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.0,
+    "local_time_warp": 0.0,
+    "rupture_threshold": 0.0,
+    "hysteresis_speed": 0.0,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": false,
+    "connections": []
+  },
+  "parameter_timeline_state": {
+    "enabled": false,
+    "tracks": {}
+  }
+}

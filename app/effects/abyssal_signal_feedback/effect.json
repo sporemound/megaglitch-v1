@@ -1,0 +1,215 @@
+{
+  "id": "abyssal_signal_feedback",
+  "name": "Abyssal Signal Feedback",
+  "category": "performance",
+  "description": "One-hour retrofuturistic undersea glitch console instrument with caustics, sonar rings, chromatic tearing, CRT pressure, spiral feedback, and decompression fade.",
+  "script": "script.lua",
+  "shader": "shader.frag",
+  "inputs": [
+    {
+      "name": "u_image",
+      "type": "sampler2D",
+      "description": "Current input image or video frame."
+    },
+    {
+      "name": "u_feedback",
+      "type": "sampler2D",
+      "description": "Previous frame or feedback buffer."
+    },
+    {
+      "name": "u_bubble_mask",
+      "type": "sampler2D",
+      "description": "Bubble generator opacity/mask texture."
+    },
+    {
+      "name": "u_bubble_normal",
+      "type": "sampler2D",
+      "description": "Bubble generator encoded normal texture."
+    },
+    {
+      "name": "u_bubble_depth",
+      "type": "sampler2D",
+      "description": "Bubble generator depth, age, and radius texture."
+    },
+    {
+      "name": "u_bubble_refraction",
+      "type": "sampler2D",
+      "description": "Bubble generator refraction offset texture."
+    },
+    {
+      "name": "u_bubble_highlight",
+      "type": "sampler2D",
+      "description": "Bubble generator highlight and sparkle texture."
+    }
+  ],
+  "parameters": [
+    {
+      "id": "master",
+      "name": "Master",
+      "type": "float",
+      "default": 0.8,
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.001,
+      "purpose": "Overall effect intensity."
+    },
+    {
+      "id": "bpm",
+      "name": "BPM",
+      "type": "float",
+      "default": 92.0,
+      "min": 40.0,
+      "max": 180.0,
+      "step": 0.1,
+      "purpose": "Beat pulse timing."
+    },
+    {
+      "id": "manual_energy",
+      "name": "Manual Energy",
+      "type": "float",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.001,
+      "purpose": "Manual boost to performance energy."
+    },
+    {
+      "id": "manual_chaos",
+      "name": "Manual Chaos",
+      "type": "float",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.001,
+      "purpose": "Manual boost to glitch chaos."
+    },
+    {
+      "id": "phase_override",
+      "name": "Phase Override",
+      "type": "int",
+      "default": -1,
+      "min": -1,
+      "max": 6,
+      "step": 1,
+      "purpose": "Set to -1 for automatic one-hour timeline, or 0-6 to force a phase."
+    },
+    {
+      "id": "bubble_mix",
+      "name": "Bubble Mix",
+      "type": "float",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.001,
+      "purpose": "Blend amount for bubble generator source textures."
+    },
+    {
+      "id": "bubble_refraction_mix",
+      "name": "Bubble Refraction",
+      "type": "float",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.001,
+      "purpose": "How strongly bubble refraction offsets the source image."
+    },
+    {
+      "id": "bubble_highlight_mix",
+      "name": "Bubble Highlight",
+      "type": "float",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 2.0,
+      "step": 0.001,
+      "purpose": "Brightness multiplier for bubble rim and sparkle highlights."
+    }
+  ],
+  "uniforms": [
+    "u_time",
+    "u_slot_time",
+    "u_resolution",
+    "u_image",
+    "u_feedback",
+    "u_bubble_mask",
+    "u_bubble_normal",
+    "u_bubble_depth",
+    "u_bubble_refraction",
+    "u_bubble_highlight",
+    "u_master",
+    "u_phase",
+    "u_section_progress",
+    "u_energy",
+    "u_chaos",
+    "u_beat",
+    "u_caustics",
+    "u_sonar",
+    "u_chroma",
+    "u_tear",
+    "u_feedback_mix",
+    "u_scanlines",
+    "u_spiral",
+    "u_vignette",
+    "u_bubble_mix",
+    "u_bubble_refraction_mix",
+    "u_bubble_highlight_mix"
+  ],
+  "timeline": [
+    {
+      "phase": 0,
+      "range": "00:00-08:00",
+      "name": "Abyss Boot",
+      "notes": "Soft caustics, low feedback, minimal chroma, slow underwater drift."
+    },
+    {
+      "phase": 1,
+      "range": "08:00-18:00",
+      "name": "Sonar Sweep",
+      "notes": "Sonar rings and subtle chromatic shimmer become more visible."
+    },
+    {
+      "phase": 2,
+      "range": "18:00-28:00",
+      "name": "Datamosh Tide",
+      "notes": "Block tearing and horizontal displacement increase."
+    },
+    {
+      "phase": 3,
+      "range": "28:00-38:00",
+      "name": "Feedback Tunnel",
+      "notes": "Feedback mix rises and spiral pull begins."
+    },
+    {
+      "phase": 4,
+      "range": "38:00-48:00",
+      "name": "Brainwipe CRT",
+      "notes": "Scanlines, vignette, chroma, and feedback pressure intensify."
+    },
+    {
+      "phase": 5,
+      "range": "48:00-57:00",
+      "name": "Max Chaos",
+      "notes": "Full glitch bloom with sonar, tearing, spiral feedback, and beat pulses."
+    },
+    {
+      "phase": 6,
+      "range": "57:00-60:00",
+      "name": "Decompression",
+      "notes": "Gradual reduction of chaos, feedback, chroma, and distortion."
+    }
+  ],
+  "tags": [
+    "undersea",
+    "feedback",
+    "crt",
+    "sonar",
+    "glitch",
+    "chromatic",
+    "performance"
+  ],
+  "performance_notes": [
+    "Single GLSL 330 fragment shader for the full one-hour slot.",
+    "All modes are selected and blended through uniforms from the Lua controller.",
+    "Uses only u_image and u_feedback as external texture inputs.",
+    "Noise and fbm are kept to short fixed loops for live performance."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "params": [
+    {"name": "uFeedbackMix", "type": "float", "label": "Feedback Mix", "value": 0.25, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uAberration", "type": "float", "label": "Aberration", "value": 0.003, "min": 0.0, "max": 0.03, "step": 0.0001},
+    {"name": "uWarp", "type": "float", "label": "Warp", "value": 0.08, "min": 0.0, "max": 0.50, "step": 0.0005},
+    {"name": "uNoise", "type": "float", "label": "Noise", "value": 0.10, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uExposure", "type": "float", "label": "Exposure", "value": 1.0, "min": 0.0, "max": 3.0, "step": 0.01},
+    {"name": "uContrast", "type": "float", "label": "Contrast", "value": 1.0, "min": 0.0, "max": 2.0, "step": 0.01},
+    {"name": "uSaturation", "type": "float", "label": "Saturation", "value": 1.0, "min": 0.0, "max": 2.0, "step": 0.01},
+    {"name": "uHue", "type": "float", "label": "Hue", "value": 0.0, "min": -3.14159265359, "max": 3.14159265359, "step": 0.001},
+    {"name": "uYFlip", "type": "checkbox", "label": "Y Flip", "value": false, "min": 0, "max": 1, "step": 1}
+  ],
+  "order": [
+    "uFeedbackMix",
+    "uAberration",
+    "uWarp",
+    "uNoise",
+    "uExposure",
+    "uContrast",
+    "uSaturation",
+    "uHue",
+    "uYFlip"
+  ]
+}

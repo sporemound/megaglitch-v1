@@ -1,0 +1,15 @@
+{
+  "params": [
+    {"name": "uFeedbackMix", "type": "float", "label": "Feedback Mix", "value": 0.22, "min": 0.0, "max": 0.97, "step": 0.001},
+    {"name": "uCurvature", "type": "float", "label": "Curvature", "value": 0.55, "min": 0.0, "max": 1.5, "step": 0.001},
+    {"name": "uScanline", "type": "float", "label": "Scanline", "value": 0.65, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uMask", "type": "float", "label": "RGB Mask", "value": 0.55, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uGlow", "type": "float", "label": "Glow", "value": 0.55, "min": 0.0, "max": 2.0, "step": 0.001},
+    {"name": "uJitter", "type": "float", "label": "Jitter", "value": 0.18, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uChromatic", "type": "float", "label": "Chromatic", "value": 0.42, "min": 0.0, "max": 2.0, "step": 0.001},
+    {"name": "uNoise", "type": "float", "label": "Noise", "value": 0.16, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uSaturation", "type": "float", "label": "Saturation", "value": 1.25, "min": 0.0, "max": 3.0, "step": 0.001},
+    {"name": "uUseInput", "type": "checkbox", "label": "Use Input", "value": true, "min": 0, "max": 1, "step": 1},
+    {"name": "uAudioDrive", "type": "float", "label": "Audio Drive", "value": 0.35, "min": 0.0, "max": 1.0, "step": 0.001}
+  ]
+}

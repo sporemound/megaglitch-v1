@@ -1,0 +1,142 @@
+{
+  "nodes": [
+    {
+      "type": "CellularAutomataNode",
+      "label": "Cellular Automata",
+      "position": [
+        167,
+        50
+      ],
+      "params": {
+        "ca_rule": 30,
+        "ca_generations": 10,
+        "ca_animation_speed": 1.0,
+        "ca_time_offset": 94.02999877929688,
+        "seed_from_image": true,
+        "blend_mode": "overlay"
+      }
+    },
+    {
+      "type": "AnalogTVNode",
+      "label": "Analog TV",
+      "position": [
+        166,
+        246
+      ],
+      "params": {
+        "signal_noise": 0.0,
+        "vsync_corruption": 0.0,
+        "hsync_corruption": 0.0,
+        "ghosting": 0.0,
+        "rf_interference": 0.0
+      }
+    },
+    {
+      "type": "CRTEmulationNode",
+      "label": "CRT Emulation",
+      "position": [
+        165,
+        423
+      ],
+      "params": {
+        "crt_scanline": 0.0,
+        "crt_mask": "rgb",
+        "crt_curvature": 0.0,
+        "crt_bloom": 0.0
+      }
+    },
+    {
+      "type": "RotationKaleidoscopeNode",
+      "label": "Rotation / Kaleidoscope",
+      "position": [
+        164,
+        583
+      ],
+      "params": {
+        "rotation_angle": 0.0,
+        "rotation_speed": 0.0,
+        "kaleidoscope_segments": 1,
+        "kaleidoscope_speed": 0.2
+      }
+    },
+    {
+      "type": "QuantumGestaltCognitiveNode",
+      "label": "Quantum Gestalt (AI)",
+      "position": [
+        163,
+        741
+      ],
+      "params": {
+        "qg_intensity": 0.5,
+        "qg_state": "Auto (AI)",
+        "qg_progress": 0.0,
+        "qg_auto_animate": true
+      }
+    },
+    {
+      "type": "FeedbackTrailNode",
+      "label": "Feedback / Trail",
+      "position": [
+        164,
+        901
+      ],
+      "params": {
+        "feedback_intensity": 0.0,
+        "trailing_intensity": 0.0
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "SOURCE",
+      "to_node": "Cellular Automata",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Cellular Automata",
+      "to_node": "Analog TV",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Analog TV",
+      "to_node": "CRT Emulation",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CRT Emulation",
+      "to_node": "Rotation / Kaleidoscope",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Rotation / Kaleidoscope",
+      "to_node": "Quantum Gestalt (AI)",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Quantum Gestalt (AI)",
+      "to_node": "Feedback / Trail",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Feedback / Trail",
+      "to_node": "DISPLAY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "version": "1.0",
+  "source_pos": [
+    66,
+    59
+  ],
+  "display_pos": [
+    550,
+    72
+  ]
+}

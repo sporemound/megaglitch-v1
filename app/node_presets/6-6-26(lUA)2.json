@@ -1,0 +1,155 @@
+{
+  "nodes": [
+    {
+      "type": "LuaShaderNode",
+      "label": "Lua Shader",
+      "position": [
+        2,
+        12
+      ],
+      "params": {
+        "shader_preset": "glitch_feedback",
+        "shader_path": "lua_glsl_demo/shaders/glitch_feedback.frag",
+        "lua_path": "lua_glsl_demo/scripts/glitch_feedback.lua",
+        "metadata_path": "lua_glsl_demo/scripts/glitch_feedback.effect",
+        "use_input": true,
+        "freeze_time": false,
+        "flip_y": false,
+        "uFeedbackMix": 0.718999981880188,
+        "uAberration": 0.02199999988079071,
+        "uWarp": 0.09000000357627869,
+        "uNoise": 0.1,
+        "uExposure": 1.5820000171661377,
+        "uContrast": 1.065000057220459,
+        "uSaturation": 1.5540000200271606,
+        "uHue": 1.7079999446868896,
+        "uYFlip": false
+      }
+    },
+    {
+      "type": "CUDATemporalSlitScanNode",
+      "label": "CUDA Temporal Slit-Scan",
+      "position": [
+        4,
+        476
+      ],
+      "params": {
+        "enabled": true,
+        "buffer_size": 30,
+        "orientation": "luma",
+        "mix": 1.0,
+        "direction": "backward",
+        "time_scale": 1.0,
+        "time_offset": 0.0,
+        "depth_curve": "linear",
+        "luma_scale": 1.0,
+        "luma_gamma": 1.0,
+        "luma_invert": true,
+        "luma_blur": 0,
+        "wave_amount": 0.0,
+        "wave_frequency": 4.0,
+        "jitter_amount": 0.0,
+        "jitter_scale": 16.0,
+        "posterize_steps": 0,
+        "freeze_history": false
+      }
+    },
+    {
+      "type": "CUDAChannelDriftNode",
+      "label": "CUDA Channel Drift",
+      "position": [
+        356,
+        14
+      ],
+      "params": {
+        "enabled": true,
+        "r_shift_x": -10.0,
+        "r_shift_y": -5.0,
+        "g_shift_x": 0.0,
+        "g_shift_y": 0.0,
+        "b_shift_x": 10.0,
+        "b_shift_y": 5.0,
+        "scale_var": 0.03500000014901161,
+        "rot_var": 0.5,
+        "drift_speed": 0.40799999237060547
+      }
+    },
+    {
+      "type": "H264ArtifactsNode",
+      "label": "H264 Artifacts",
+      "position": [
+        353,
+        333
+      ],
+      "params": {
+        "enabled": true,
+        "iframe_corruption": 0.609000027179718,
+        "pframe_corruption": 0.6740000247955322,
+        "bframe_corruption": 0.8259999752044678,
+        "bitrate_starve": 0.9079999923706055
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "SOURCE",
+      "to_node": "Lua Shader",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Lua Shader",
+      "to_node": "CUDA Temporal Slit-Scan",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Temporal Slit-Scan",
+      "to_node": "CUDA Channel Drift",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "CUDA Channel Drift",
+      "to_node": "H264 Artifacts",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "H264 Artifacts",
+      "to_node": "DISPLAY",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "version": "1.0",
+  "source_pos": [
+    50,
+    50
+  ],
+  "display_pos": [
+    703,
+    5
+  ],
+  "display_macros": {
+    "history_offset": 0.0,
+    "memory_decay": 0.0,
+    "event_hazard": 0.0,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.0,
+    "local_time_warp": 0.0,
+    "rupture_threshold": 0.0,
+    "hysteresis_speed": 0.0,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  },
+  "parameter_timeline_state": {
+    "enabled": true,
+    "tracks": {}
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "params": [
+    {"name": "uBlockSize", "type": "int", "label": "Block Size", "value": 28, "min": 4, "max": 160, "step": 1},
+    {"name": "uDisplace", "type": "float", "label": "Displace", "value": 1.15, "min": 0.0, "max": 4.0, "step": 0.001},
+    {"name": "uFreezeMix", "type": "float", "label": "Freeze Mix", "value": 0.32, "min": 0.0, "max": 0.98, "step": 0.001},
+    {"name": "uCorrupt", "type": "float", "label": "Corrupt", "value": 0.28, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "uColorBleed", "type": "float", "label": "Color Bleed", "value": 0.50, "min": 0.0, "max": 2.0, "step": 0.001},
+    {"name": "uQuantize", "type": "int", "label": "Quantize", "value": 0, "min": 0, "max": 32, "step": 1},
+    {"name": "uUseInput", "type": "checkbox", "label": "Use Input", "value": true, "min": 0, "max": 1, "step": 1},
+    {"name": "uAudioDrive", "type": "float", "label": "Audio Drive", "value": 0.40, "min": 0.0, "max": 1.0, "step": 0.001}
+  ]
+}

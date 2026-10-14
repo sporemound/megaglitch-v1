@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/sporemound/megaglitch",
+  "inspected_parent_commit": "ff8b53c9376c271c1b7ce8ca95f38065f3073603",
+  "layout": "app/",
+  "engine_source_modified": false,
+  "documentation_changes": [
+    "app/README.md: recognize the existing megaglitch-v1 GPLv3 license"
+  ],
+  "core_file_sha256": {
+    "main.py": "db90faa056b22051efbf02e129d8437f327f9cec219ccea35f60ad4a8597cb14",
+    "megaglitchfm_app_new.py": "44a6184f12c67b1ee182234d8ca3acae4c7beec8f3b3c4248372a0d890abcb00",
+    "effects_registry.py": "5b0ab7193b3492e4a7f2c8e9e21447ab965b596f4864693f2fcf02f3e4d05cef",
+    "glitch_effects.py": "c4a1d04fb63d563f054bbad5f3a7df1cea57b6494e0a6628f9a26ddf4aa4ad5b",
+    "gpu_ops.py": "ad68d4bc800cb5cb44ae5a8afb1b507cda7cacbddc778664c483047a9f849ca3",
+    "node_pipeline_runtime.py": "8278a8030aca38a4e6050b2be865d18a5fc1275ba05074b497ac0af45fdd79fd",
+    "frame_state.py": "45f089683138e5e0f6dcb746535472adf4d43d5052cae817c7dcdf36a380e087"
+  },
+  "hash_basis": "Git-normalized source bytes (LF line endings)"
+}

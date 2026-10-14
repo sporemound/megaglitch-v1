@@ -1,0 +1,6 @@
+Cython
+setuptools
+wheel
+pyinstaller==6.21.0
+pefile
+

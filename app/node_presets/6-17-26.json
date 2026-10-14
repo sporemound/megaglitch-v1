@@ -1,0 +1,202 @@
+{
+  "version": "2.0",
+  "preset_type": "dual_deck_session",
+  "decks": {
+    "a": {
+      "nodes": [
+        {
+          "type": "BubbleSimGeneratorNode",
+          "label": "Bubble Sim Gen",
+          "position": [
+            13,
+            -49
+          ],
+          "params": {
+            "seed": 1977,
+            "particle_texture_size": 128,
+            "density": 0.55,
+            "base_radius": 0.018,
+            "radius_variation": 0.65,
+            "buoyancy": 0.16,
+            "drag": 0.92,
+            "turbulence": 0.35,
+            "flow_speed": 0.25,
+            "depth_spread": 0.8,
+            "depth_motion": 0.7,
+            "orbit_strength": 0.8,
+            "perspective": 1.0,
+            "show_energy": 0.0,
+            "show_chaos": 0.0,
+            "refraction_strength": 0.025,
+            "highlight_strength": 0.45,
+            "sparkle": 0.25,
+            "debug_mode": "composite",
+            "mutation_strength": 0.0,
+            "mutation_rate": 1.0,
+            "mutation_warp": 0.5,
+            "mutation_palette": 0.4,
+            "mutation_fracture": 0.4,
+            "mutation_echo": 0.35
+          }
+        },
+        {
+          "type": "AbyssalSignalFeedbackShaderNode",
+          "label": "Abyssal Signal Feedback",
+          "position": [
+            461,
+            -1
+          ],
+          "params": {
+            "shader_preset": "abyssal_signal_feedback",
+            "shader_path": "lua_glsl_demo/shaders/abyssal_signal_feedback.frag",
+            "lua_path": "lua_glsl_demo/scripts/abyssal_signal_feedback.lua",
+            "metadata_path": "lua_glsl_demo/scripts/abyssal_signal_feedback.effect",
+            "use_input": true,
+            "freeze_time": false,
+            "flip_y": false,
+            "master": 0.8,
+            "phase_override": 3,
+            "timeline_speed": 1.0,
+            "bpm": 92.0,
+            "beat_gain": 0.0,
+            "manual_energy": 0.8529999852180481,
+            "manual_chaos": 0.0,
+            "caustics_gain": 2.0,
+            "caustics_scale": 1.0,
+            "caustics_speed": 2.9670000076293945,
+            "sonar_gain": 1.4950000047683716,
+            "sonar_speed": 1.0,
+            "sonar_width": 0.03,
+            "sonar_beam": 1.0,
+            "chroma_gain": 0.45,
+            "chroma_pixels": 14.0,
+            "tear_gain": 0.55,
+            "tear_density": 1.0,
+            "tear_speed": 1.0,
+            "tear_displace": 0.75,
+            "feedback_gain": 0.65,
+            "feedback_decay": 0.93,
+            "feedback_zoom": 0.035,
+            "spiral_gain": 1.45,
+            "spiral_twist": 1.0,
+            "spiral_radius": 1.0,
+            "scanline_gain": 0.35,
+            "grille_gain": 0.65,
+            "vignette_gain": 0.55,
+            "deep_mix": 0.55,
+            "teal_gain": 0.75,
+            "amber_gain": 0.85,
+            "brightness": 1.0,
+            "contrast": 1.0,
+            "grain_gain": 0.45,
+            "bloom_gain": 0.65
+          }
+        }
+      ],
+      "links": [
+        {
+          "from_node": "Bubble Sim Gen",
+          "to_node": "Abyssal Signal Feedback",
+          "from_attr": "bubble_refraction",
+          "to_attr": "image_in"
+        },
+        {
+          "from_node": "Abyssal Signal Feedback",
+          "to_node": "DISPLAY",
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        }
+      ],
+      "version": "1.0",
+      "source_pos": [
+        -54,
+        505
+      ],
+      "display_pos": [
+        1027,
+        -10
+      ]
+    },
+    "b": {
+      "nodes": [
+        {
+          "type": "LuaShaderNode",
+          "label": "Lua Shader",
+          "position": [
+            586,
+            104
+          ],
+          "params": {
+            "shader_preset": "glitch_feedback",
+            "shader_path": "lua_glsl_demo/shaders/glitch_feedback.frag",
+            "lua_path": "lua_glsl_demo/scripts/glitch_feedback.lua",
+            "metadata_path": "lua_glsl_demo/scripts/glitch_feedback.effect",
+            "use_input": true,
+            "freeze_time": false,
+            "flip_y": false,
+            "uFeedbackMix": 0.8100000023841858,
+            "uWarp": 0.0,
+            "uContrast": 1.0,
+            "uSaturation": 1.0,
+            "uUseInput": true,
+            "uFeedbackZoom": -0.10899999737739563,
+            "uGlitch": 0.0,
+            "uScanline": 0.0,
+            "uChromatic": 0.55,
+            "uPosterize": 0,
+            "uColorDrift": -0.0430000014603138,
+            "uBrightness": 1.05,
+            "uInvert": false,
+            "uAudioDrive": 0.35
+          }
+        }
+      ],
+      "links": [
+        {
+          "from_node": "SOURCE",
+          "to_node": "Lua Shader",
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        },
+        {
+          "from_node": "Lua Shader",
+          "to_node": "DISPLAY",
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        }
+      ],
+      "version": "1.0",
+      "source_pos": [
+        349,
+        169
+      ],
+      "display_pos": [
+        1263,
+        50
+      ]
+    }
+  },
+  "master_mix": 0.5329999923706055,
+  "master_transition": "Additive",
+  "display_macros": {
+    "history_offset": 0.0,
+    "memory_decay": 0.0,
+    "event_hazard": 0.0,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.0,
+    "local_time_warp": 0.0,
+    "rupture_threshold": 0.0,
+    "hysteresis_speed": 0.0,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  },
+  "parameter_timeline_state": {
+    "enabled": true,
+    "tracks": {}
+  }
+}

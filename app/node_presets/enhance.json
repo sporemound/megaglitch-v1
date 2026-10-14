@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "LuaShaderNode:1",
+      "type": "LuaShaderNode",
+      "label": "Lua Shader",
+      "position": [
+        260,
+        96
+      ],
+      "params": {
+        "shader_preset": "enhance",
+        "shader_path": "lua_glsl_demo/shaders/enhance.frag",
+        "lua_path": "lua_glsl_demo/scripts/enhance.lua",
+        "metadata_path": "lua_glsl_demo/scripts/enhance.effect",
+        "use_input": true,
+        "freeze_time": false,
+        "flip_y": false,
+        "uZoom": 2.35,
+        "uPanX": 0.0,
+        "uPanY": 0.0,
+        "uSharpen": 0.22,
+        "uEdgeTrace": 0.28,
+        "uScanner": 0.42,
+        "uGrid": 0.18,
+        "uReadout": 0.58,
+        "uPixelLock": 0.12,
+        "uFreezeBlend": 0.04,
+        "uFeedbackMix": 0.08,
+        "uChromatic": 0.10,
+        "uNoise": 0.08,
+        "uAmber": 0.58,
+        "uCyan": 0.32,
+        "uExposure": 1.08,
+        "uContrast": 1.18,
+        "uVignette": 0.55,
+        "uAutoScan": true
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "SOURCE",
+      "from_node_id": null,
+      "to_node": "Lua Shader",
+      "to_node_id": "LuaShaderNode:1",
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    },
+    {
+      "from_node": "Lua Shader",
+      "from_node_id": "LuaShaderNode:1",
+      "to_node": "DISPLAY",
+      "to_node_id": null,
+      "from_attr": "image_out",
+      "to_attr": "image_in"
+    }
+  ],
+  "source_pos": [
+    50,
+    50
+  ],
+  "display_pos": [
+    620,
+    70
+  ]
+}

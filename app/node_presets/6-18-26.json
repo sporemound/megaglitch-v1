@@ -1,0 +1,122 @@
+{
+  "version": "2.0",
+  "preset_type": "dual_deck_session",
+  "decks": {
+    "a": {
+      "nodes": [
+        {
+          "type": "LuaShaderNode",
+          "label": "Lua Shader",
+          "position": [
+            -2079,
+            -3492
+          ],
+          "params": {
+            "shader_preset": "abyssal_signal_feedback",
+            "shader_path": "lua_glsl_demo/shaders/abyssal_signal_feedback.frag",
+            "lua_path": "lua_glsl_demo/scripts/abyssal_signal_feedback.lua",
+            "metadata_path": "lua_glsl_demo/scripts/abyssal_signal_feedback.effect",
+            "use_input": true,
+            "freeze_time": false,
+            "flip_y": false,
+            "master": 1.0,
+            "phase_override": 3,
+            "timeline_speed": 0.3700000047683716,
+            "bpm": 92.0,
+            "beat_gain": 0.0,
+            "manual_energy": 0.0,
+            "manual_chaos": 0.0,
+            "caustics_gain": 0.55,
+            "caustics_scale": 0.9100000262260437,
+            "caustics_speed": 3.0,
+            "sonar_gain": 2.5,
+            "sonar_speed": 3.0,
+            "sonar_width": 0.09200000017881393,
+            "sonar_beam": 2.0,
+            "chroma_gain": 1.3370000123977661,
+            "chroma_pixels": 12.336999893188477,
+            "tear_gain": 0.0,
+            "tear_density": 1.0,
+            "tear_speed": 3.739000082015991,
+            "tear_displace": 0.75,
+            "feedback_gain": 1.2170000076293945,
+            "feedback_decay": 0.9110000133514404,
+            "feedback_zoom": 0.04899999871850014,
+            "spiral_gain": 3.0,
+            "spiral_twist": -0.012000000104308128,
+            "spiral_radius": 1.0880000591278076,
+            "scanline_gain": 0.0,
+            "grille_gain": 2.0,
+            "vignette_gain": 0.0,
+            "deep_mix": 0.6629999876022339,
+            "teal_gain": 2.0,
+            "amber_gain": 2.0,
+            "brightness": 1.0,
+            "contrast": 1.0,
+            "grain_gain": 0.0,
+            "bloom_gain": 0.65
+          }
+        }
+      ],
+      "links": [
+        {
+          "from_node": "SOURCE",
+          "to_node": "Lua Shader",
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        },
+        {
+          "from_node": "Lua Shader",
+          "to_node": "DISPLAY",
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        }
+      ],
+      "version": "1.0",
+      "source_pos": [
+        -1889,
+        -3458
+      ],
+      "display_pos": [
+        -1341,
+        -3458
+      ]
+    },
+    "b": {
+      "nodes": [],
+      "links": [],
+      "version": "1.0",
+      "source_pos": [
+        50,
+        50
+      ],
+      "display_pos": [
+        600,
+        50
+      ]
+    }
+  },
+  "master_mix": 0.5,
+  "master_transition": "Normal Mix",
+  "display_macros": {
+    "history_offset": 0.0,
+    "memory_decay": 0.0,
+    "event_hazard": 0.0,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.0,
+    "local_time_warp": 0.0,
+    "rupture_threshold": 0.0,
+    "hysteresis_speed": 0.0,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  },
+  "parameter_timeline_state": {
+    "enabled": true,
+    "tracks": {}
+  }
+}

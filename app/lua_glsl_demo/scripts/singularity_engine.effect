@@ -1,0 +1,56 @@
+{
+  "params": [
+    {"name": "pixel_size", "type": "float", "label": "Pixel Size", "value": 5.0, "min": 1.0, "max": 12.0, "step": 1.0},
+    {"name": "palette_levels", "type": "float", "label": "Palette Levels", "value": 14.0, "min": 4.0, "max": 32.0, "step": 1.0},
+    {"name": "dither_strength", "type": "float", "label": "Dither", "value": 0.14, "min": 0.0, "max": 0.35, "step": 0.001},
+    {"name": "posterize_amount", "type": "float", "label": "Posterize Amt", "value": 1.0, "min": 0.0, "max": 1.0, "step": 0.001},
+
+    {"name": "iso_slant", "type": "float", "label": "Iso Slant", "value": 0.45, "min": -1.0, "max": 1.0, "step": 0.001},
+    {"name": "iso_depth", "type": "float", "label": "Iso Depth", "value": 0.25, "min": -0.6, "max": 0.8, "step": 0.001},
+    {"name": "cascade_angle", "type": "float", "label": "Cascade Angle", "value": -0.28, "min": -1.0, "max": 1.0, "step": 0.001},
+    {"name": "perspective_compression", "type": "float", "label": "Perspective", "value": 0.18, "min": 0.0, "max": 0.6, "step": 0.001},
+
+    {"name": "swell_strength", "type": "float", "label": "Swell", "value": 0.045, "min": 0.0, "max": 0.12, "step": 0.001},
+    {"name": "chop_strength", "type": "float", "label": "Chop", "value": 0.022, "min": 0.0, "max": 0.08, "step": 0.001},
+    {"name": "wave_speed", "type": "float", "label": "Wave Speed", "value": 0.85, "min": 0.0, "max": 3.0, "step": 0.001},
+    {"name": "cross_current", "type": "float", "label": "Cross Current", "value": 0.035, "min": -0.15, "max": 0.15, "step": 0.001},
+    {"name": "turbulence_amount", "type": "float", "label": "Turbulence", "value": 0.045, "min": 0.0, "max": 0.14, "step": 0.001},
+    {"name": "surge_amount", "type": "float", "label": "Surge", "value": 0.18, "min": 0.0, "max": 0.6, "step": 0.001},
+
+    {"name": "fall_line_position", "type": "float", "label": "Fall Line", "value": 0.52, "min": 0.05, "max": 0.95, "step": 0.001},
+    {"name": "fall_line_curve", "type": "float", "label": "Fall Curve", "value": 0.15, "min": 0.0, "max": 0.45, "step": 0.001},
+    {"name": "fall_strength", "type": "float", "label": "Fall Strength", "value": 0.24, "min": 0.0, "max": 0.65, "step": 0.001},
+    {"name": "cascade_speed", "type": "float", "label": "Cascade Speed", "value": 0.75, "min": 0.0, "max": 2.5, "step": 0.001},
+    {"name": "cascade_stretch", "type": "float", "label": "Cascade Stretch", "value": 0.18, "min": 0.0, "max": 0.6, "step": 0.001},
+    {"name": "sheet_breakup", "type": "float", "label": "Sheet Breakup", "value": 0.34, "min": 0.0, "max": 1.0, "step": 0.001},
+
+    {"name": "foam_threshold", "type": "float", "label": "Foam Threshold", "value": 0.34, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "foam_edge_strength", "type": "float", "label": "Foam Edge", "value": 1.0, "min": 0.0, "max": 3.0, "step": 0.001},
+    {"name": "foam_opacity", "type": "float", "label": "Foam Opacity", "value": 0.72, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "foam_breakup", "type": "float", "label": "Foam Breakup", "value": 0.38, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "foam_scroll_speed", "type": "float", "label": "Foam Scroll", "value": 0.85, "min": 0.0, "max": 3.0, "step": 0.001},
+
+    {"name": "band_count", "type": "float", "label": "Band Count", "value": 4.0, "min": 1.0, "max": 6.0, "step": 1.0},
+    {"name": "band_thickness", "type": "float", "label": "Band Thickness", "value": 0.46, "min": 0.1, "max": 1.2, "step": 0.001},
+    {"name": "band_spacing", "type": "float", "label": "Band Spacing", "value": 8.0, "min": 2.0, "max": 24.0, "step": 0.001},
+    {"name": "band_speed_variation", "type": "float", "label": "Band Speed Var", "value": 0.62, "min": 0.0, "max": 2.0, "step": 0.001},
+    {"name": "band_breakup", "type": "float", "label": "Band Breakup", "value": 0.28, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "band_source_offset", "type": "float", "label": "Band Offset", "value": 0.075, "min": 0.0, "max": 0.24, "step": 0.001},
+
+    {"name": "undertow_strength", "type": "float", "label": "Undertow", "value": 0.08, "min": 0.0, "max": 0.24, "step": 0.001},
+    {"name": "undertow_noise", "type": "float", "label": "Undertow Noise", "value": 0.55, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "edge_pull_amount", "type": "float", "label": "Edge Pull", "value": 0.07, "min": 0.0, "max": 0.22, "step": 0.001},
+    {"name": "current_direction", "type": "float", "label": "Current Dir", "value": -0.22, "min": -1.0, "max": 1.0, "step": 0.001},
+
+    {"name": "feedback_wave_echo", "type": "float", "label": "Wave Echo", "value": 0.18, "min": 0.0, "max": 0.6, "step": 0.001},
+    {"name": "old_wave_opacity", "type": "float", "label": "Old Wave", "value": 0.22, "min": 0.0, "max": 0.8, "step": 0.001},
+    {"name": "echo_decay", "type": "float", "label": "Echo Decay", "value": 0.72, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "cascade_feedback_strength", "type": "float", "label": "Cascade Feedback", "value": 0.24, "min": 0.0, "max": 0.8, "step": 0.001},
+
+    {"name": "debris_amount", "type": "float", "label": "Debris", "value": 0.58, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "tile_dropout", "type": "float", "label": "Tile Dropout", "value": 0.16, "min": 0.0, "max": 0.6, "step": 0.001},
+    {"name": "streak_length", "type": "float", "label": "Streak Length", "value": 0.12, "min": 0.0, "max": 0.5, "step": 0.001},
+    {"name": "collapse_darkening", "type": "float", "label": "Collapse Dark", "value": 0.55, "min": 0.0, "max": 1.0, "step": 0.001},
+    {"name": "collapse_pixel_size", "type": "float", "label": "Collapse Pixel", "value": 2.4, "min": 1.0, "max": 8.0, "step": 0.001}
+  ]
+}

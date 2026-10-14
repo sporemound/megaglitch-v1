@@ -1,0 +1,40 @@
+{
+  "name": "one_hour_show_bubbles",
+  "slot_length_seconds": 3600,
+  "target_node": "bubble_sim_generator_node",
+  "notes": "Example controller events for the BubbleSimGeneratorNode. The shader effect consumes the resulting bubble_* textures separately.",
+  "events": [
+    { "type": "set", "time": 0.0, "target": "bubble_sim_generator_node.enabled", "value": true },
+    { "type": "set", "time": 0.0, "target": "bubble_sim_generator_node.seed", "value": 1977 },
+    { "type": "set", "time": 0.0, "target": "bubble_sim_generator_node.density", "value": 0.18 },
+    { "type": "set", "time": 0.0, "target": "bubble_sim_generator_node.buoyancy", "value": 0.09 },
+    { "type": "set", "time": 0.0, "target": "bubble_sim_generator_node.turbulence", "value": 0.18 },
+    { "type": "set", "time": 0.0, "target": "bubble_sim_generator_node.highlight_strength", "value": 0.22 },
+
+    { "type": "ramp", "time": 480.0, "duration": 600.0, "target": "bubble_sim_generator_node.density", "from": 0.18, "to": 0.45, "curve": "smoothstep" },
+    { "type": "ramp", "time": 480.0, "duration": 600.0, "target": "bubble_sim_generator_node.highlight_strength", "from": 0.22, "to": 0.52, "curve": "smoothstep" },
+    { "type": "pulse", "time": 540.0, "duration": 540.0, "target": "bubble_sim_generator_node.show_energy", "amount": 0.35, "curve": "ease_out" },
+
+    { "type": "ramp", "time": 1080.0, "duration": 600.0, "target": "bubble_sim_generator_node.turbulence", "from": 0.25, "to": 0.85, "curve": "ease_in_out" },
+    { "type": "ramp", "time": 1080.0, "duration": 600.0, "target": "bubble_sim_generator_node.flow_speed", "from": 0.25, "to": 0.95, "curve": "ease_in_out" },
+    { "type": "ramp", "time": 1080.0, "duration": 600.0, "target": "bubble_sim_generator_node.refraction_strength", "from": 0.025, "to": 0.055, "curve": "smoothstep" },
+
+    { "type": "ramp", "time": 1680.0, "duration": 600.0, "target": "bubble_sim_generator_node.depth_spread", "from": 0.55, "to": 0.95, "curve": "smoothstep" },
+    { "type": "ramp", "time": 1680.0, "duration": 600.0, "target": "bubble_sim_generator_node.refraction_strength", "from": 0.055, "to": 0.07, "curve": "smoothstep" },
+    { "type": "ramp", "time": 1680.0, "duration": 600.0, "target": "bubble_sim_generator_node.base_radius", "from": 0.014, "to": 0.024, "curve": "smoothstep" },
+
+    { "type": "ramp", "time": 2280.0, "duration": 600.0, "target": "bubble_sim_generator_node.sparkle", "from": 0.20, "to": 0.70, "curve": "ease_in_out" },
+    { "type": "ramp", "time": 2280.0, "duration": 600.0, "target": "bubble_sim_generator_node.highlight_strength", "from": 0.52, "to": 1.15, "curve": "ease_in_out" },
+    { "type": "pulse", "time": 2400.0, "duration": 420.0, "target": "bubble_sim_generator_node.show_energy", "amount": 0.65, "curve": "ease_out" },
+
+    { "type": "ramp", "time": 2880.0, "duration": 540.0, "target": "bubble_sim_generator_node.density", "from": 0.45, "to": 0.72, "curve": "ease_in_out" },
+    { "type": "ramp", "time": 2880.0, "duration": 540.0, "target": "bubble_sim_generator_node.turbulence", "from": 0.85, "to": 1.55, "curve": "ease_in_out" },
+    { "type": "pulse", "time": 2880.0, "duration": 540.0, "target": "bubble_sim_generator_node.show_chaos", "amount": 0.8, "curve": "ease_out" },
+
+    { "type": "ramp", "time": 3420.0, "duration": 180.0, "target": "bubble_sim_generator_node.density", "from": 0.65, "to": 0.05, "curve": "ease_out" },
+    { "type": "ramp", "time": 3420.0, "duration": 180.0, "target": "bubble_sim_generator_node.turbulence", "from": 1.10, "to": 0.08, "curve": "ease_out" },
+    { "type": "ramp", "time": 3420.0, "duration": 180.0, "target": "bubble_sim_generator_node.refraction_strength", "from": 0.07, "to": 0.0, "curve": "ease_out" },
+    { "type": "ramp", "time": 3420.0, "duration": 180.0, "target": "bubble_sim_generator_node.sparkle", "from": 0.65, "to": 0.0, "curve": "ease_out" }
+  ]
+}
+

@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Editors and operating systems
+.vs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime output
+*.log
+*.log.*
+recordings/
+exports/
+screenshots/
+
+# Python/native build output
+build/
+dist/
+native/temporal_ring/temporal_ring.cpp
+megaglitch/_native_temporal*.pyd
+megaglitch/_native_temporal*.so
+megaglitch/_native/
+native/runtime/target/
+native/ui/target/
+
+# Machine-specific diagnostic output
+tools/diagnostics/*.json
+!tools/diagnostics/latest.json
+
+# Temporary working directory
+.tmp/
+*.tmp

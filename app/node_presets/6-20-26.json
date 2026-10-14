@@ -1,0 +1,98 @@
+{
+  "version": "2.0",
+  "preset_type": "dual_deck_session",
+  "decks": {
+    "a": {
+      "nodes": [
+        {
+          "type": "PFrameGlitchesNode",
+          "label": "P-Frame Glitches",
+          "position": [
+            51,
+            150
+          ],
+          "params": {
+            "enabled": true,
+            "motion_vector_corruption": 0.45100000500679016,
+            "motion_vector_direction": "spiral",
+            "prediction_error_amplify": 0.9779999852180481,
+            "prediction_error_direction": "uniform",
+            "temporal_bleeding": 0.0,
+            "temporal_bleeding_direction": "ping_pong",
+            "macroblock_scramble": 0.0,
+            "scrambling_pattern": "random",
+            "residual_injection": 0.0,
+            "residual_direction": "uniform",
+            "reference_corruption": 0.0,
+            "reference_corruption_pattern": "scattered",
+            "macroblock_size": "16",
+            "error_threshold": 30,
+            "bleed_distance": 3,
+            "residual_noise_type": "gaussian",
+            "reference_corruption_type": "random_blocks",
+            "buffer_size": 1
+          }
+        }
+      ],
+      "links": [
+        {
+          "from_node": "SOURCE",
+          "to_node": "P-Frame Glitches",
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        },
+        {
+          "from_node": "P-Frame Glitches",
+          "to_node": "DISPLAY",
+          "from_attr": "image_out",
+          "to_attr": "image_in"
+        }
+      ],
+      "version": "1.0",
+      "source_pos": [
+        -77,
+        62
+      ],
+      "display_pos": [
+        471,
+        64
+      ]
+    },
+    "b": {
+      "nodes": [],
+      "links": [],
+      "version": "1.0",
+      "source_pos": [
+        50,
+        50
+      ],
+      "display_pos": [
+        600,
+        50
+      ]
+    }
+  },
+  "master_mix": 0.5,
+  "master_transition": "Normal Mix",
+  "display_macros": {
+    "history_offset": 0.0,
+    "memory_decay": 0.0,
+    "event_hazard": 0.0,
+    "clock_quantization": 0.0,
+    "sync_desync": 0.0,
+    "phase_reset_chance": 0.0,
+    "local_time_warp": 0.0,
+    "rupture_threshold": 0.0,
+    "hysteresis_speed": 0.0,
+    "modulator_coupling": 0.0,
+    "time_reversal": 0.0
+  },
+  "mod_matrix_state": {
+    "enabled": true,
+    "connections": []
+  },
+  "parameter_timeline_state": {
+    "enabled": true,
+    "tracks": {}
+  }
+}
