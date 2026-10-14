@@ -261,16 +261,27 @@ def close_pe_dependencies(args, runtime):
     for directory in (args.python_root / "Library/bin", args.python_root / "DLLs", args.python_root):
         for source in directory.glob("*.dll"):
             candidates.setdefault(source.name.lower(), source)
+    def is_amd64(path):
+        binary = pefile.PE(str(path), fast_load=True)
+        try:
+            return binary.FILE_HEADER.Machine == 0x8664
+        finally:
+            binary.close()
+
     packaged = {}
+    pending = []
+    ignored_architectures = []
     for path in runtime.rglob("*"):
         if not path.is_file() or path.suffix.lower() not in (".exe", ".pyd", ".dll"):
             continue
-        key = path.name.lower()
-        prior = packaged.get(key)
-        if prior is not None and sha(prior) != sha(path):
-            raise RuntimeError(f"Conflicting native binary basename: {prior.relative_to(runtime)} and {path.relative_to(runtime)}")
-        packaged[key] = path
-    pending = list(packaged.values())
+        if not is_amd64(path):
+            ignored_architectures.append(path.relative_to(runtime).as_posix())
+            continue
+        pending.append(path)
+        # EXE launcher templates are not DLL targets. Vendor-local DLL versions
+        # may share a basename; each AMD64 variant still gets its imports checked.
+        if path.suffix.lower() != ".exe":
+            packaged.setdefault(path.name.lower(), []).append(path)
     checked, copied, unresolved, forwarders = set(), [], set(), set()
     while pending:
         path = pending.pop()
@@ -294,20 +305,28 @@ def close_pe_dependencies(args, runtime):
             pe.close()
         for name in sorted(names):
             key = name.lower()
-            if key.startswith(("api-ms-", "ext-ms-")) or key in IGNORED_DRIVERS or key in packaged:
+            if key.startswith(("api-ms-", "ext-ms-")) or key in IGNORED_DRIVERS:
+                continue
+            matches = packaged.get(key, ())
+            # Resolve an owner's local library before the shared runtime dirs.
+            local = (path.parent / name, runtime / name, runtime / "Library/bin" / name, runtime / "DLLs" / name)
+            if any(candidate in matches for candidate in local) or matches:
                 continue
             source = candidates.get(key)
-            if source is not None:
+            if source is not None and is_amd64(source):
                 destination = runtime / "Library/bin" / source.name
                 copy_path(source, destination)
-                packaged[key] = destination
+                packaged.setdefault(key, []).append(destination)
                 pending.append(destination)
                 copied.append(source.relative_to(args.python_root).as_posix())
             elif not (system / name).is_file():
                 unresolved.add(name)
     if unresolved:
         raise RuntimeError("Unresolved native dependencies: " + ", ".join(sorted(unresolved)))
-    return {"added_dll_inputs": sorted(copied), "export_forwarder_modules": sorted(forwarders), "unresolved": []}
+    return {"added_dll_inputs": sorted(copied), "export_forwarder_modules": sorted(forwarders),
+            "ignored_non_amd64_binaries": sorted(ignored_architectures),
+            "scoped_native_variants": {name: sorted(p.relative_to(runtime).as_posix() for p in paths)
+                                       for name, paths in packaged.items() if len(paths) > 1}, "unresolved": []}
 
 
 def retain_native_licenses(args, runtime, package):
