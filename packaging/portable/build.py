@@ -232,8 +232,15 @@ def runtime_core(args, runtime):
     for source in args.python_root.iterdir():
         if source.is_file() and (source.suffix.lower() == ".dll" or source.name in ("python.exe", "pythonw.exe") or "license" in source.name.lower()):
             copy_path(source, runtime / source.name)
-    shutil.copytree(args.python_root / "Lib", runtime / "Lib", ignore=lambda directory, names: ignore(directory, names)
-                    + (["site-packages"] if Path(directory) == args.python_root / "Lib" else []))
+    def stdlib_ignore(directory, names):
+        excluded = ignore(directory, names)
+        if Path(directory) == args.python_root / "Lib":
+            # CUDA's lowercase lib/ can share the Windows stdlib Lib directory.
+            # Native Python modules live in DLLs; root Lib DLLs are not stdlib.
+            excluded += ["site-packages"] + [name for name in names if Path(name).suffix.lower() == ".dll"]
+        return excluded
+
+    shutil.copytree(args.python_root / "Lib", runtime / "Lib", ignore=stdlib_ignore)
     copy_path(args.python_root / "DLLs", runtime / "DLLs")
     for name in ("tcl8", "tcl8.6", "tk8.6"):
         source = args.python_root / "Library/lib" / name
