@@ -31,7 +31,7 @@ The full build:
 
 1. Copies the application, preset, launchers and Python core into a new output directory.
 2. Copies pinned dependency inventories and installs the three supplied standalone wheels into the new runtime.
-3. Closes native dependencies through PE imports, delay imports and exported forwarders, considering bundled vendor `.libs` directories. Different binaries sharing one basename and unresolved non-driver dependencies fail the build. Windows system DLLs stay system-owned. Cairo, which is loaded dynamically, is included explicitly; runtime DLL search handles remain alive.
+3. Closes native dependencies through PE imports, delay imports and exported forwarders, considering bundled vendor `.libs` directories. Each package-local native binary is inspected independently. Unresolved non-driver dependencies fail the build. Windows system DLLs stay system-owned. Cairo, which is loaded dynamically, is included explicitly; runtime DLL search handles remain alive.
 4. Retains Python, package, native-library and FFmpeg notices. Optional GPU files must match their manifest hashes and include their notices.
 5. Runs the portable dependency check with a Windows-only search path, then renders a real **two-second 2160×3840, 24 fps H.264 video with stereo 48 kHz AAC** using the default 720×1280 effect canvas. Export dimensions, frame count, codecs and duration are checked with bundled FFprobe.
 6. Writes `BUILD-INFO.json`, `BUNDLE-SHA256.txt`, verification records, a ZIP, a ZIP SHA256 sidecar and a build-result JSON. ZIP CRC and complete archive inventory are checked.

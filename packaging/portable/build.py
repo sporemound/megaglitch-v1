@@ -28,7 +28,7 @@ WHEEL_TAGS = {"numpy": "cp312-cp312-win_amd64", "noise": "cp312-cp312-win_amd64"
 LAUNCH_FILES = ("launch.py", "check.py", "render-picker.ps1", "runtime-env.cmd",
                 "Start MegaGlitch.cmd", "Start MegaGlitch (CPU).cmd", "Start MegaGlitch (GPU).cmd",
                 "Render Full-Frame.cmd", "Check Installation.cmd")
-DOCUMENT_FILES = ("README.md", "README.txt", "THIRD_PARTY_NOTICES.md", "SOURCE_PROVENANCE.json")
+DOCUMENT_FILES = ("README.md", "README.txt", "VERIFICATION.md", "THIRD_PARTY_NOTICES.md", "SOURCE_PROVENANCE.json")
 IGNORED_DRIVERS = {"nvcuda.dll", "nvencodeapi64.dll"}
 
 
@@ -477,8 +477,26 @@ def isolated_environment(package):
     for name in ("PYTHONPATH", "PYTHONHOME", "CONDA_PREFIX", "VIRTUAL_ENV", "MEGAGLITCH_NODE_ROOT",
                  "MEGAGLITCH_OPENCV_BIN", "MEGAGLITCH_OPENCV_PYTHON", "MEGAGLITCH_CUDA_PATH", "MEGAGLITCH_CUDA_BIN"):
         env.pop(name, None)
-    windows = Path(env["SystemRoot"])
-    env.update({"PATH": os.pathsep.join(map(str, (package / "runtime", package / "runtime/Library/bin", package / "tools", windows / "System32", windows))),
+    windows_root = env.get("SYSTEMROOT") or env.get("SystemRoot") or env.get("WINDIR")
+    if not windows_root:
+        import ctypes
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        get_windows_directory = kernel32.GetWindowsDirectoryW
+        get_windows_directory.argtypes = (ctypes.POINTER(ctypes.c_wchar), ctypes.c_uint)
+        get_windows_directory.restype = ctypes.c_uint
+        buffer = ctypes.create_unicode_buffer(32768)
+        length = get_windows_directory(buffer, len(buffer))
+        if length == 0:
+            raise ctypes.WinError(ctypes.get_last_error())
+        if length >= len(buffer):
+            raise OSError("GetWindowsDirectoryW returned a directory longer than its buffer.")
+        windows_root = buffer.value
+    windows = Path(windows_root)
+    for name in list(env):
+        if name.upper() in ("SYSTEMROOT", "WINDIR"):
+            env.pop(name)
+    env.update({"SYSTEMROOT": str(windows), "WINDIR": str(windows),
+        "PATH": os.pathsep.join(map(str, (package / "runtime", package / "runtime/Library/bin", package / "tools", windows / "System32", windows))),
         "PYTHONNOUSERSITE": "1", "PYTHONDONTWRITEBYTECODE": "1", "PYTHONUTF8": "1",
         "TEMP": str(package / "temp"), "TMP": str(package / "temp"),
         "TCL_LIBRARY": str(package / "runtime/Library/lib/tcl8.6"), "TK_LIBRARY": str(package / "runtime/Library/lib/tk8.6"),
